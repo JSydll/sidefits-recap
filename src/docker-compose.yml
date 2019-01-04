@@ -1,0 +1,37 @@
+version:  '3'
+
+services:
+  php-apache:
+    build:
+      context: ./php-apache
+    ports:
+      - 80:80
+    volumes:
+      - ./webroot:/var/www/html
+    links:
+      - mysql
+      - neo4j
+
+  mysql:
+    image: mysql:5
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+    environment:
+      TZ: "Europe/Berlin"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+      MYSQL_ROOT_PASSWORD: "custom-root-pw"
+      MYSQL_USER: "sf-db-user"
+      MYSQL_PASSWORD: "sf-usr-pw"
+      MYSQL_DATABASE: "sf-db"
+
+  neo4j:
+    image: neo4j:2.3
+    network_mode: bridge
+    ports: 
+      - 7474:7474
+    volumes: 
+      - ./neo4j/conf:/conf
+      - ./neo4j/import:/import
+      - ./neo4j/data:/data
+    environment:
+      NEO4J_AUTH: "neo4j/sf-graph-pw"

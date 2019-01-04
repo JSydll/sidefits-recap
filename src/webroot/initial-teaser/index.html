@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+
+<head>
+    <title>Sidefits</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Sidefits is a project established with love in Hamburg/ Copenhagen. " />
+    <meta name="author" content="Sidefits" />
+    <meta name="keywords" content="Sidefits, trainingspartner, workout buddy, motivation sport" />
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <script language="javascript" type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        function showinsights(){
+            $("#lonely").fadeOut(300);
+            $("#txt1").fadeOut(300);
+            setTimeout(function(){
+                $("#fitted").fadeIn(300);
+                $("#txt2").fadeIn(300);
+            }, 350);
+            
+            setTimeout(function(){
+                hideinsights();
+            }, 7000);  
+        }
+        function hideinsights(){
+            $("#fitted").fadeOut(300);
+            $("#txt2").fadeOut(300);
+            setTimeout(function(){
+                $("#lonely").fadeIn(300);
+                $("#txt1").fadeIn(300);
+            }, 350);
+            
+            setTimeout(function(){
+                showinsights();
+            }, 5000);  
+        }
+        
+        $(document).ready(function(){
+            setTimeout(function(){
+                showinsights();
+            }, 5000);                    
+        });
+    </script>
+    <script language="javascript" type="text/javascript">
+    $(window).load(function(){
+        function resizeInput() {
+            var pxls = $(this).val().length;
+            $(this).css('width', 180+pxls);
+            $("#minput").css('width', 200+pxls);
+            $("#submitter").css('left', 420+pxls);
+        }
+        
+        $('input[type="email"]')
+            // event handler
+            .keyup(resizeInput)
+            // resize on page load
+            .each(resizeInput);
+    });
+    </script>
+    <script language="javascript" type="text/javascript">
+    function submit(){
+        document.getElementById("sendresult").innerHTML = "This is only a demo. Nothing is sent.";
+    }
+    </script>
+</head>
+<body>
+<table border="0" cellpadding="10px" cellspacing="0" summary="" style="width: 100%;">
+    <tr id="header">
+        <td style="text-align: center" colspan="2">
+                <img id="logo" src="img/Logo_Sidefits.png" alt="Welcome to Sidefits" />
+        </td>
+    </tr>
+    
+    <tr id="content" style="height: 480px">
+        <td style="text-align: right; width: 50%;">
+            <div id="txt1">
+                <div class="txtcss1" style="margin-top: 60px; margin-right: 50px;">Wasting <span class="txtcss2">POTENTIAL</span></div>
+                <div class="txtcss1" style="margin-right: 35px;">lacking <span class="txtcss2">MOTIVATION</span></div>
+                <div class="txtcss1" style="margin-right: 20px;">missing the <span class="txtcss2">FUN</span></div>
+                <div class="txtcss1" style="margin-bottom: 50px;">in <span class="txtcss2">SPORTS?</span></div>
+            </div>
+            <div id="txt2">
+                <div class="txtcss1" style="margin-top: 50px;">
+                    <span style="border-bottom: 2px solid #4CB0A9; font-family: 'Helvetica Bold', Arial;">Something amazing</span> to</div>
+                <div class="txtcss1" style="margin-right: 20px;">unleash your <span class="txtcss2">POTENTIAL</span></div>
+                <div class="txtcss1" style="margin-right: 60px;">raise your <span class="txtcss2">MOTIVATION</span></div>
+                <div class="txtcss1" style="margin-right: 100px;">and increase your <span class="txtcss2">FUN</span></div>
+                <div class="txtcss1" style="margin-bottom: 50px; margin-right: 130px;">
+                    <span style="border-bottom: 2px solid #4CB0A9; font-family: 'Helvetica Bold', Arial;">IS JUST BEING BUILT!</span></div>
+            </div>
+        </td>
+        <td style="text-align: left; width: 50%">
+           <img id="fitted" src="img/Fit_Sidefit.png" alt="Matched Sidefits" /> 
+           <img id="lonely" src="img/Lonely_Sidefit.png" alt="Lonely Sidefit" />
+            
+        </td>
+    </tr>
+
+    <tr id="footer">
+        <td style="text-align: right;">
+            <div style="margin-top: 50px; margin-right: 80px; margin-bottom: 3px">
+                Be the first to <span class="txtcss2" style="border-bottom: 2px solid #4D4D4D; font-size: 34px">GET THE GOOD NEWS!</span></div>
+        </td>
+        <td valign="bottom"> 
+            <div id="nlinput">
+                <div id="label">NEWSLETTER</div>
+                <div id="minput"><input class="nlform" type="email" name="email" placeholder="Your email address" id="mailinput"/>
+                    <input class="nlform" type="hidden" name="wearehumans"/></div>
+                <div id="submitter"><span onclick="submit();">STAY TUNED</span></div>
+            </div>
+            <div id="sendresult" style="color: #FF552A; font-style: italic; font-size: 14px; padding-left: 20px"></div>
+            
+            <div style="position: absolute; left: 20px; bottom: 10px;">
+                <a href="workout.html" style="text-decoration: none;"><span class="noticelink">Workout Timer</span></a></div>
+                
+            <div style="position: absolute; right: 20px; bottom: 10px;">
+                <a href="notice.html" style="text-decoration: none;"><span class="noticelink">Site Notice</span></a></div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,103 @@
+html, body {
+    font-size: 24px; 
+    font-family: "Helvetica Light", Arial;
+    color: #4D4D4D;
+}
+
+@font-face {font-family: "Helvetica Light"; 
+            src: url(../fonts/HelveticaNeueLTS.otf); 
+}
+
+@font-face {font-family: "Helvetica Bold";
+            src: url(../fonts/HelveticaNeueCB.otf);
+}
+            
+#logo {
+    width: 35%; height: auto;
+    position: relative; top: 10px;
+}
+
+#lonely {
+    width: 35%; height: auto;
+    position: relative; top: 10px;
+    display: block;
+}
+
+#fitted {
+    width: 55%; height: auto;
+    position: relative; top: 10px;
+    display: none; 
+}
+#txt2 {
+    display: none;
+}
+
+.txtcss1 {
+    padding: 10px;
+}
+
+.txtcss1 a {text-decoration: none; color: #4CB0A9}
+.txtcss1 a:hover {color: #4D4D4D;}
+
+.txtcss2 {
+    color: #4CB0A9; 
+    font-family: "Helvetica Bold", Arial;
+}
+
+.backlink {
+    color: #4CB0A9;
+    font-family: "Helvetica Bold", Arial;    
+}
+
+.backlink:hover {color: #4D4D4D}
+
+.noticelink {
+    color: #4CB0A9;
+    font-family: "Helvetica Light", Arial;
+    font-size: 17px;
+}
+
+.noticelink:hover {color: #4D4D4D}
+
+
+#nlinput {
+    height: 20px; width: auto;
+    position: relative;
+    padding: 5px;
+}
+#label {
+    width: 165px; height: 30px;
+    padding: 0px 5px 8px 20px;
+    position: absolute; bottom: 5px; left: 10px;
+    background-image: url(../img/bg_grey.png);
+    background-size: 100% 100%;
+    color: #4CB0A9;
+    font-size: 30px;
+    z-index: 10;
+}
+#minput {
+    min-width: 180px; height: 30px; 
+    padding: 6px 10px 2px 35px;
+    position: absolute; bottom: 5px; left: 170px;
+    background-image: url(../img/bg_petrol.png);
+    background-size: 100% 100%;
+    font-size: 30px; 
+    z-index: 9;  
+}
+
+#submitter {
+    position: absolute; bottom: 5px; left: 440px;        
+}
+#submitter span {text-decoration: none; color: #4CB0A9; font-size: 30px;}
+#submitter span:hover {color: #4D4D4D; cursor: pointer;}
+
+#mailinput {
+    border: none;
+    background-color: #4CB0A9;
+    font-size: 20px;
+    width: 180px;
+}
+
+#mailinput::-webkit-input-placeholder { font-style: italic; color: #FFFFFF;}
+#mailinput::-moz-placeholder { font-style: italic; color: #FFFFFF;}
+#mailinput::-ms-input-placeholder { font-style: italic; color: #FFFFFF;}

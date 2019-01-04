@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+
+<head>
+    <title>Sidefits - Workout Timer</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <script language="javascript" type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/jquery-ui.min.js"></script>
+    
+    <link rel="stylesheet" href="flipclock/flipclock.css" type="text/css" />
+    <script language="javascript" type="text/javascript" src="flipclock/flipclock.js"></script>
+
+    <script language="javascript" type="text/javascript">    
+    function initFlipclock() {
+        var totaltime = 60 * parseInt($('#totalmins').val()) + parseInt($('#totalsecs').val());
+        var intervaltime = parseInt($('#intervaltime').val());
+        var breaks = parseInt($('#breaks').val());
+        
+        var exerciseno = Math.floor(totaltime / ( intervaltime + breaks ));
+        
+        clock1 = $('.timer').FlipClock(totaltime,{
+            autoStart: false,
+            countdown: true,
+            clockFace: 'MinuteCounter',
+            /* callbacks: {
+		        	interval: function() {
+		        		var time = this.factory.getTime().time;
+                        var currinterval = totaltime;
+                        var currbreak;
+
+		        		for(i = 0; i < exerciseno; i++){
+                            currinterval = currinterval - i * intervaltime - i * breaks;
+                            currbreak = currinterval - (i + 1) * breaks;
+
+                            if(time == currinterval){
+                                $('.timer-alert').html('Exercise number '+(i + 1)+' begins! Let\'s do this!').effect("highlight", {}, 3000);
+                            }
+
+                            if(time == currbreak){
+                                $('.timer-alert').html('Well done! Have a short break.').effect("highlight", {}, 3000);
+                            }
+                        }
+		        	}
+		        } */
+        });
+        
+        $('.timer-controls > .start').click(function(e){
+            clock1.start();
+        });
+
+        $('.timer-controls > .pause').click(function(e){
+            clock1.stop();
+        });
+
+        $('.timer-controls > .reset').click(function(e){
+            clock1.stop();
+            clock1.setTime(totaltime);
+        });
+    }
+    
+    $(document).ready(function(){      
+        var clock1;
+        
+        initFlipclock(); 
+        
+        $('.reload-timer').click(function(){
+            initFlipclock();    
+        });
+         
+        $('.expand').click(function(){
+            if($('.timer-wrap').hasClass('fullscreen')){
+                $('.timer-wrap').removeClass('fullscreen');
+            } else {
+                $('.timer-wrap').addClass('fullscreen');
+            }    
+        }); 
+    });
+
+    </script>
+    <style>
+    input {width: 50px;}
+    .flip-clock-wrapper {width: auto;}
+    .timer-controls span:hover, .reload-timer:hover {
+        color: #4CB0A9;
+        cursor: pointer;
+        
+    }
+    .timer-controls span:not(.reset):not(.expand) {margin-right: 50px;}  
+    .fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        margin: 0;
+        padding: 10px;
+        background: #FFFFFF;
+    } 
+    </style>
+</head>
+<body>
+<table border="0" cellpadding="10px" cellspacing="0" summary="" style="width: 100%;">
+    <tr id="header">
+        <td style="text-align: center" colspan="2">
+                <img id="logo" src="img/Logo_Sidefits.png" alt="Welcome to Sidefits" />
+        </td>
+    </tr>
+    
+    <tr id="content">
+        <td style="text-align: center; width: 100%;" colspan="2">
+                <div class="txtcss1" style="position: relative; left: 50%; margin-left: -250px; margin-top: 60px; margin-bottom: 60px; width: 500px; font-size: 20px">
+                    <span class="txtcss2">ABS CHALLENGE TIMER</span><br />
+                    <br />
+                    You can use the clock here to do the 30-days Abs Challenge we posted on Facebook (here) or basically any workout that involves Intervals/ EMOM.<br /><br />
+                    <table border="0" cellpadding="0" cellspacing="0" summary="" style="display: inline-block;">
+                        <tr><td>Total time: </td><td><input type="number" value="9" id="totalmins" size="3"/> minutes <br />
+                                                    <input type="number" value="0" id="totalsecs" size="3"/> seconds</td></tr>
+                        <tr><td style="padding-right: 20px;">Interval length: </td><td><input type="number" value="60" id="intervaltime"/> seconds</td></tr>
+                        <tr><td>Break length: </td><td><input type="number" value="0" size="3" id="breaks"/> seconds</td></tr>
+                        <tr><td height="20px" colspan="2"></td></tr>
+                        <tr><td colspan="2"><span class="reload-timer">Apply to the timer!</span></td></tr>
+                    </table>
+                    <br /><br />
+                    <div class="timer-wrap">
+                        <div class="timer" style="display: inline-block;"></div><br />
+                        <div class="timer-controls"><span class="start">Start</span><span class="pause">Pause</span><span class="reset">Reset</span><br /><br />
+                            <span class="expand">Toggle fullscreen</span>
+                        </div><br />
+                        <div class="timer-alert"></div>
+                    </div>
+                    <br /><br />
+                    
+            </div>
+        </td>
+    </tr>
+
+    <tr id="footer">
+        <td style="text-align: right;">
+            <div style="position: absolute; right: 20px; bottom: 10px;">
+                <a href="index.html" style="text-decoration: none;"><span class="backlink" style="border-bottom: 2px solid #4D4D4D;">BACK</span></a></div>
+        </td>
+        <td valign="bottom"> 
+        </td>
+    </tr>
+</table>
+</body>
+</html>
