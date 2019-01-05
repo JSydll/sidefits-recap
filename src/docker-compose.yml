@@ -6,8 +6,11 @@ services:
       context: ./php-apache
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./webroot:/var/www/html
+    environment:
+      ALLOW_OVERRIDE: 'true'
     links:
       - mysql
       - neo4j

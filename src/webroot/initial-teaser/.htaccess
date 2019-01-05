@@ -1,2 +1,0 @@
-RewriteEngine on
-RewriteRule ^(([\w/\-]+)?[\w-])(/|\.html)?$ $1.html [L]
