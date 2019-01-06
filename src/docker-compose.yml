@@ -1,5 +1,13 @@
 version:  '3'
 
+volumes:
+  mysql-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/mysql/data
+
 services:
   php-apache:
     build:
@@ -16,16 +24,28 @@ services:
       - neo4j
 
   mysql:
-    image: mysql:5
+    image: mysql
     volumes:
-      - ./mysql/conf:/etc/mysql/conf.d
+      - mysql-data:/var/lib/mysql
+    restart: always
     environment:
-      TZ: "Europe/Berlin"
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
       MYSQL_ROOT_PASSWORD: "custom-root-pw"
       MYSQL_USER: "sf-db-user"
       MYSQL_PASSWORD: "sf-usr-pw"
       MYSQL_DATABASE: "sf-db"
+
+  myadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+      - 4433:443
+    restart: always
+    environment:
+      MYSQL_USERNAME: "sf-db-user"
+      MYSQL_PASSWORD: "sf-usr-pw"
+    external_links:
+      - mysql:db
 
   neo4j:
     image: neo4j:2.3
@@ -36,5 +56,10 @@ services:
       - ./neo4j/conf:/conf
       - ./neo4j/import:/import
       - ./neo4j/data:/data
+    ulimits:
+      nofile: 
+        soft: 20000
+        hard: 40000
     environment:
       NEO4J_AUTH: "neo4j/sf-graph-pw"
+      NEO4J_CACHE_MEMORY: "4G"
