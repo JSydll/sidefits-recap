@@ -1,0 +1,11 @@
+<div ng-controller="SignupCtrl">
+    <br /><br />
+    <img ng-if="user.locale == 'en_EN'" src="images/app/Abs_Plan_Popup_EN.png" style="width: 100%; height: auto" alt="Unleash your potential - become a Sidefit!" title="Unleash your potential - become a Sidefit!" />
+    <img ng-if="user.locale == 'de_DE'" src="images/app/Abs_Plan_Popup_DE.png" style="width: 100%; height: auto" alt="Starte jetzt durch - werde Sidefit!" title="Starte jetzt durch - werde Sidefit!" />
+    <p style="text-align: center">
+        <br />
+        <span translate="ACCOUNT_ADVANTAGES"></span>
+        <br /><br />
+    </p>
+    <a ui-sref="modal.login" class="btn btn-block btn-orange" style="color: #fff"><span translate="SIGNUP"></span></a>
+</div>

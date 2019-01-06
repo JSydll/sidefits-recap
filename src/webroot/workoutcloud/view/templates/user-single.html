@@ -1,0 +1,84 @@
+﻿<!-- Mobile view of a single user -->
+<div class="row hidden-sm hidden-md hidden-lg">
+    <div class="u-prev panel panel-default">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="u-prev-m-head">
+                    <div class="u-img"><a ui-sref="content.user({uid : user.user_id })"><img ng-src="images/user/profile/{{user.picPath}}" /></a></div>
+                    <div class="u-name"><a ui-sref="content.user({uid : user.user_id })"><span>{{user.name}}</span></a></div>
+                </div>  
+            </div>          
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="u-prev-m-info">
+                    <blockquote>
+                        <span class="text-muted">
+                            <h5><i>{{user.shortBio}}</i></h5>
+                        </span>
+                    </blockquote>
+                    <h5 ng-show="user.visible"><span translate="USERCONTACT"></span>: <span ng-bind-html="user.contact"></span></h5>
+                    <button class="btn btn-default" ng-class="{'active': user.isFollowed}" ng-click="followUnfollow(this)">
+                        <i class="fa fa-user-plus"></i>
+                        <span translate="FOLLOW" ng-if="!user.isFollowed"></span>
+                        <span translate="UNFOLLOW" ng-if="user.isFollowed"></span>
+                    </button>
+                </div>
+            </div>         
+        </div>        
+        <!-- Featured workouts -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="u-prev-m-workouts">
+                    <h4><span translate="USER_SAMPLE_WORKOUTS"></span> {{user.name}}</h4>
+                    <span class="u-sample-workout pull-left" ng-repeat="workout in user.sampleWorkouts">
+                        <a ui-sref="content.workout({wid : workout.workout_id })">
+                            <img class="img-rounded" src="images/workouts/{{workout.picPath}}"/><br />
+                            <span class="u-sample-workout-title">{{workout.name | limitTo: 25}}...</span>
+                        </a>
+                    </span>
+                    <div class="clearfix"></div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<!-- Desktop view of a single user -->
+<div class="row hidden-xs">
+    <div class="u-prev panel panel-default">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="u-img"><a ui-sref="content.user({uid : user.user_id })"><img ng-src="images/user/profile/{{user.picPath}}" class="img-circle"/></a></div>
+            </div>
+            <!-- User info -->
+            <div class="col-sm-5">
+                <div class="u-prev-d-info">
+                    <div class="u-name"><a ui-sref="content.user({uid : user.user_id })"><span>{{user.name}}</span></a></div>
+                    <div>
+                        <blockquote>
+                            <span class="text-muted">              
+                                <h5><i>{{user.shortBio}}</i></h5>
+                            </span>
+                        </blockquote>
+                        <h5 ng-show="user.visible"><span translate="CONTACT"></span>: <span ng-bind-html="user.contact"></span></h5>
+                        <button class="btn btn-default" ng-class="{'active': user.isFollowed}" ng-click="followUnfollow(this)"><i class="fa fa-user-plus"></i> <span translate="FOLLOW" ng-if="!user.isFollowed"></span><span translate="UNFOLLOW" ng-if="user.isFollowed"></span></button>
+                    </div>
+                </div>                          
+            </div>
+            <!-- Featured workouts -->
+            <div class="col-sm-5">
+                <div class="u-prev-d-workouts">
+                    <h4><span translate="USER_SAMPLE_WORKOUTS"></span> {{user.name}}</h4>
+                    <span class="u-sample-workout pull-left" ng-repeat="workout in user.sampleWorkouts">
+                        <a ui-sref="content.workout({wid : workout.workout_id })">
+                            <img class="img-rounded" src="images/workouts/{{workout.picPath}}"/><br />
+                            <span class="u-sample-workout-title">{{workout.name | limitTo: 25}}...</span>
+                        </a>
+                    </span>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

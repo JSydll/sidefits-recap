@@ -1,0 +1,414 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bar and Run Workout</title>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="description" content="Mit der Sidefits WorkoutBox kannst du dein perfektes Workout finden oder mit deinen Freunden teilen."/>
+    <meta name="author" content="Sidefits"/>
+    <meta name="keywords" content="sidefits, workout, fitness, generator, baukasten"/>
+
+    <!-- Bootstrap Style Sheets -->
+    <link rel="stylesheet" href="scripts/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="scripts/theme.min.css" type="text/css" />
+    <script src="scripts/bootstrap.min.js"></script>
+    
+    <!-- General site styling -->
+    <link href="scripts/styles.css" type="text/css" rel="stylesheet" media="all" />
+    <!-- WEB FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400,300italic' rel='stylesheet' type='text/css'/>
+
+</head>
+
+<body>
+<div class="navbar">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <a class="navbar-brand"><img id="navbar-brand-img" src="images/app/Icon.png" alt="Sidefits" /></a>
+                <span class="navbar-text" style="width: 400px;">
+                    <span>Sidefits WorkoutCloud</span>
+                </span>
+            </div>
+        </div>  
+    </div>
+</div>
+<div class="container" style="margin: 60px 15px 5px 15px;">
+<!-- Header pane -->
+    <div class="row header-pane">
+        <div class="header-pane-img"><img src="https://sidefits.com/view/images/workouts/BarandRunWorkout.png" /></div>
+        <div class="header-pane-title">Bar and Run Workout</div>
+        <div class="header-pane-creator"><img src="https://sidefits.com/view/images/user/profile/Josch.jpg" class="img-circle"/> <i class="glyphicon"></i></div>
+        <div class="header-pane-love active"><i class="glyphicon glyphicon-heart"> </i></div>
+    </div>
+    <!-- Creator info pane -->
+    <div class="row creator-info">
+        <div class="col-xs-12">
+            <h5><span>Created by</span> <i>Josch from Sidefits</i></h5>
+            <blockquote style="margin: 0px; width: 100%" class="pull-left">
+                <span class="text-muted">
+                    <h5><i>Work Hard - Work Out Harder</i></h5>
+                                    </span>
+            </blockquote>
+            <div class="clearfix"></div>
+            <h5>Contact: josch@sidefits.com</h5>        </div>
+    </div>
+    <!-- Workout stats -->
+    <div class="row workout-stats panel panel-default">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="status-pane-estimates">
+                    <span id="est-time" class="col-xs-2">
+                        <span class="time-val">18 <span class="time-capt">min.</span></span>
+                        <br />
+                        <span class="time-val">34 <span class="time-capt">sec.</span></span>
+                    </span>
+                    <span class="col-xs-2">
+                        <span class="avg-difficulty pull-left">
+                            <span class="count-val"><span class="count-capt">Difficulty</span> <br />2.4</span>
+                        </span>
+                    </span>
+                    <span id="dimensions" class="col-xs-6">
+                        <span style="display: inline-block;">
+                            <div class="dimension-wrap pull-left">
+                                <span class="dimension-icon">
+                                    <img src="images/app/Flex_empty.png" />
+                                </span>
+                                <span class="dimension-count ">0%</span>
+                            </div>
+                            <div class="dimension-wrap pull-left">
+                                <span class="dimension-icon">
+                                    <img src="images/app/Mstrength_full.png" />
+                                </span>
+                                <span class="dimension-count active">27%</span>
+                            </div>
+                            <div class="dimension-wrap pull-left">
+                                <span class="dimension-icon">
+                                    <img src="images/app/Mendurance_full.png" />
+                                </span>
+                                <span class="dimension-count active">32%</span>
+                            </div>
+                            <div class="dimension-wrap pull-left">
+                                <span class="dimension-icon">
+                                    <img src="images/app/Cardio_full.png" />
+                                </span>
+                                <span class="dimension-count active">40%</span>
+                            </div>
+                            <span class="clearfix"></span>
+                        </span>
+                    </span>
+                    <span id="exercise-count" class="col-xs-2">
+                        <span class="count-val">6 <br /><span class="count-capt">Exercises</span></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="prev-tags">
+                    &nbsp;&nbsp;&nbsp;Tags: 
+                    <span class="prev-exercise"><i class="glyphicon glyphicon-tag"></i> Upper Body</span><span class="prev-exercise"><i class="glyphicon glyphicon-tag"></i> Legs</span><span class="prev-exercise"><i class="glyphicon glyphicon-tag"></i> Calisthenics</span>                </div>
+                <div style="width: 100%; height: 10px"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Main data area -->
+    <div class="row workout-data panel panel-default">
+        <div id="plan-data" class="pull-left" style="padding-right: 20px;">
+            <ul class="plan-data-map">
+                <li class="plan-data-round">
+                            <div>
+                                <div class="round-title">1 x Runde 1</div>
+                            </div>
+                            <ul class="plan-data-map"><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Pullup</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">8<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Toe to Bar</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">12<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Triceps Dip</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">14<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Pistol</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">10<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Chin Up</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">8<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Running</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">400<span class="count-capt">m</span></span></span></div>
+                            </div>
+                            </li>
+                </ul>
+                </li><li class="plan-data-round">
+                            <div>
+                                <div class="round-title">1 x Runde 2</div>
+                            </div>
+                            <ul class="plan-data-map"><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Pullup</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">7<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Toe to Bar</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">10<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Triceps Dip</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">12<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Pistol</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">10<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Chin Up</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">7<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Running</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">400<span class="count-capt">m</span></span></span></div>
+                            </div>
+                            </li>
+                </ul>
+                </li><li class="plan-data-round">
+                            <div>
+                                <div class="round-title">1 x Runde 3</div>
+                            </div>
+                            <ul class="plan-data-map"><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Pullup</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">6<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Toe to Bar</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">8<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Triceps Dip</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">10<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Pistol</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">8<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Chin Up</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">6<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Running</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">400<span class="count-capt">m</span></span></span></div>
+                            </div>
+                            </li>
+                </ul>
+                </li><li class="plan-data-round">
+                            <div>
+                                <div class="round-title">1 x Runde 4</div>
+                            </div>
+                            <ul class="plan-data-map"><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Pullup</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">5<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Toe to Bar</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">6<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Triceps Dip</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">8<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Pistol</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">8<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Chin Up</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">5<span class="count-capt">Reps</span></span></span></div>
+                            </div>
+                            </li><li class="plan-data-exercise">
+                                <div class="row"><div class="col-xs-8 exercise-title" style="padding: 20px 5px;">Running</div>
+                                    <div class="col-xs-4" style="padding: 20px 5px;"><span class="exercise-modus"><span class="count-val">400<span class="count-capt">m</span></span></span></div>
+                            </div>
+                            </li>
+                </ul>
+                </li>            </ul>
+            <div id="workout-annotations" class="well">
+                <h3>Description</h3>
+                <span class="text-muted">Für dieses Workout wird eine Klimmzugstange und eine Laufstrecke von (ca.) 400 m benötigt. Idealer Weise ein Spiel- oder Calisthenics-Park neben einem Sportplatz. Die berechnete Schwierigkeit täuscht allerdings...</span>
+            </div>
+        </div>
+   
+        <div id="exercise-explanations" class="pull-right">
+            <h3 style="margin-top: 0px;">Exercise descriptions</h3>
+            <ul class="exercise-explain-map">
+            <li>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="edescr-img-wrap pull-left"><span>
+                            <a href="https://sidefits.com/view/images/exercises/pullup_1-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/pullup_1-m.jpg" />
+                            </a>
+                        </span><span>
+                            <a href="https://sidefits.com/view/images/exercises/pullup_2-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/pullup_2-m.jpg" />
+                            </a>
+                        </span></div>
+                    </div>
+                <div class="row">
+                    <div class="col-xs-12 edescr-content">
+                        <div class="edescr-headline"><span>Pullup</span></div>
+                        <div class="edescr-text"><span>Have a shoulder wide grip with palms facing away from you and pull yourself up so that your chin reaches over the bar. Lower yourself slowly down until your arms are outstretched.</span></div>
+                    </div>
+                </div>
+                   <!--  <div class="col-xs-2 edescr-info">
+                        <span class="edescr-difficulty">4</span><br />
+                        <span class="edescr-equipment">1</span>
+                    </div> -->
+                </div></li><li>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="edescr-img-wrap pull-left"><span>
+                            <a href="https://sidefits.com/view/images/exercises/toetobar_1-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/toetobar_1-m.jpg" />
+                            </a>
+                        </span><span>
+                            <a href="https://sidefits.com/view/images/exercises/toetobar_2-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/toetobar_2-m.jpg" />
+                            </a>
+                        </span></div>
+                    </div>
+                <div class="row">
+                    <div class="col-xs-12 edescr-content">
+                        <div class="edescr-headline"><span>Toe to Bar</span></div>
+                        <div class="edescr-text"><span>Hold onto a pullup bar and bring your legs up so that your toes touch the bar in between your hands. Try not to swing with your body. To prevent this, intentionally flex your abs and create body tension.</span></div>
+                    </div>
+                </div>
+                   <!--  <div class="col-xs-2 edescr-info">
+                        <span class="edescr-difficulty">5</span><br />
+                        <span class="edescr-equipment">1</span>
+                    </div> -->
+                </div></li><li>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="edescr-img-wrap pull-left"><span>
+                            <a href="https://sidefits.com/view/images/exercises/bench_dips_1-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/bench_dips_1-m.jpg" />
+                            </a>
+                        </span><span>
+                            <a href="https://sidefits.com/view/images/exercises/bench_dips_2-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/bench_dips_2-m.jpg" />
+                            </a>
+                        </span></div>
+                    </div>
+                <div class="row">
+                    <div class="col-xs-12 edescr-content">
+                        <div class="edescr-headline"><span>Triceps Dip</span></div>
+                        <div class="edescr-text"><span>Get seated near a step or bench. Sit on the floor with knees slightly bent, and grab the edge of the elevated surface and straighten the arms. Go down until a 90-degree angle and push up again.</span></div>
+                    </div>
+                </div>
+                   <!--  <div class="col-xs-2 edescr-info">
+                        <span class="edescr-difficulty">3</span><br />
+                        <span class="edescr-equipment">1</span>
+                    </div> -->
+                </div></li><li>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="edescr-img-wrap pull-left"><span>
+                            <a href="https://sidefits.com/view/images/exercises/Pistol_1-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/Pistol_1-m.jpg" />
+                            </a>
+                        </span><span>
+                            <a href="https://sidefits.com/view/images/exercises/Pistol_2-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/Pistol_2-m.jpg" />
+                            </a>
+                        </span></div>
+                    </div>
+                <div class="row">
+                    <div class="col-xs-12 edescr-content">
+                        <div class="edescr-headline"><span>Pistol</span></div>
+                        <div class="edescr-text"><span>Extend one leg and go into a deep squat with the other.</span></div>
+                    </div>
+                </div>
+                   <!--  <div class="col-xs-2 edescr-info">
+                        <span class="edescr-difficulty">5</span><br />
+                        <span class="edescr-equipment">0</span>
+                    </div> -->
+                </div></li><li>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="edescr-img-wrap pull-left"><span>
+                            <a href="https://sidefits.com/view/images/exercises/chinup_1-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/chinup_1-m.jpg" />
+                            </a>
+                        </span><span>
+                            <a href="https://sidefits.com/view/images/exercises/chinup_2-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/chinup_2-m.jpg" />
+                            </a>
+                        </span><span>
+                            <a href="https://sidefits.com/view/images/exercises/chinup_3-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/chinup_3-m.jpg" />
+                            </a>
+                        </span></div>
+                    </div>
+                <div class="row">
+                    <div class="col-xs-12 edescr-content">
+                        <div class="edescr-headline"><span>Chin Up</span></div>
+                        <div class="edescr-text"><span>This is a pullup with your palms facing toward you. This pullup version is working your biceps very much. Pull yourself up until your chin is above the bar. Fully extend your arms when going down.</span></div>
+                    </div>
+                </div>
+                   <!--  <div class="col-xs-2 edescr-info">
+                        <span class="edescr-difficulty">3</span><br />
+                        <span class="edescr-equipment">1</span>
+                    </div> -->
+                </div></li><li>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="edescr-img-wrap pull-left"><span>
+                            <a href="https://sidefits.com/view/images/exercises/running-lg.jpg">
+                                <img class="edescr-img img-rounded" style="max-width: 350px"src="https://sidefits.com/view/images/exercises/running-m.jpg" />
+                            </a>
+                        </span></div>
+                    </div>
+                <div class="row">
+                    <div class="col-xs-12 edescr-content">
+                        <div class="edescr-headline"><span>Running</span></div>
+                        <div class="edescr-text"><span>Run in your own pace if not indicated otherwise</span></div>
+                    </div>
+                </div>
+                   <!--  <div class="col-xs-2 edescr-info">
+                        <span class="edescr-difficulty">1</span><br />
+                        <span class="edescr-equipment">0</span>
+                    </div> -->
+                </div></li>            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <div id="disclaimer">
+            <span class="text-muted">This workout has been created by a user. Participation at own responsibility. Please always pay attention to your health, reach out for the limit but stop if it gets too tough. </span>
+        </div>
+        <div class="bigspace"></div>
+</div>
+<div class="bigspace"></div>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8">
+                <p class="text-muted white-text">Made by Sidefits with <i class="glyphicon glyphicon-heart icon-l"></i> in Hamburg/ Copenhagen</p>
+            </div>
+            <div class="col-xs-2"></div>
+    </div>
+    </div>    
+</div>    
+    
+</body>
+</html>

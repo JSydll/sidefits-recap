@@ -1,0 +1,22 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()"><span aria-hidden="true" style="font-size: 35px;">&times;</span><span class="sr-only">Close</span></button>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.login')" id="modalLabel" translate="LOGIN"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.faq')" id="modalLabel" translate="FAQ"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.sportsscientist')" id="modalLabel" translate="OUR_SPORTSSCIENTIST"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.explain')" id="modalLabel" translate="EXPLAINER"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.sendMail')" id="modalLabel" translate="SEND_BY_EMAI"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.signup')" id="modalLabel" translate="SIGNUP"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.terms')" id="modalLabel" translate="TERMS_CONDITIONS"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.privacy')" id="modalLabel" translate="PRIVACY_POLICY"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.proposeExercise')" id="modalLabel" translate="PROPOSE_NEW_EXERCISE"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.unleash')" id="modalLabel" translate="UNLEASH"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.invite')" id="modalLabel" translate="INVITE_FRIENDS"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.feedback')" id="modalLabel">Feedback</h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.contact')" id="modalLabel" translate="CONTACT"></h2>
+        <h2 class="modal-title text-center" ng-show="$state.includes('modal.slackapp')" id="modalLabel" translate="SLACKAPP_INFO"></h2>
+    </div>
+    <div class="modal-body">
+        <div ui-view ></div>
+    </div>
+</div><!-- /.modal-content -->

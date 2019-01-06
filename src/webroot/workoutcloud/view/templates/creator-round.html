@@ -1,0 +1,26 @@
+<!-- Round template --> 
+<div class="well well-sm well-creator-round">
+    <div class="pull-left">        
+        <!-- Mobile count input -->
+        <div class="pull-left hidden-md hidden-lg" style="margin-right: 10px; max-width: 140px">
+            <h-number ng-model="item.count" value="item.count" min="1" step="1" ></h-number>
+        </div>
+        <!-- Desktop count input -->
+        <div class="pull-left hidden-xs hidden-sm" style="margin-right: 10px;">
+            <input type="number" style="width: 70px" class="form-control" ng-model="item.count" value="item.count"/>
+        </div>
+        <h4 class="pull-right">
+            x <span translate="ROUND"></span>
+        </h4>
+    </div>
+    <div class="pull-right">
+        <span class="pull-left">
+            <a class="btn btn-sm white-text btn-creator-delete" data-nodrag ng-click="remove(this)"><i class="glyphicon glyphicon-remove icon-xl"></i></a>
+            <a class="btn btn-sm white-text btn-creator-duplicate" ng-if="item.title != 'Pause'" data-nodrag ng-click="duplicate(this)"><i class="fa fa-clone icon-xl"></i></a>
+        </span>
+        <span class="btn" ng-if="item.exercises.length">
+            <i class="glyphicon white-text" data-nodrag ng-click="item.collapsed = !item.collapsed" ng-class="{'glyphicon-chevron-up': !item.collapsed, 'glyphicon-chevron-down': item.collapsed}"></i>
+        </span>
+        </div>
+    <div class="clearfix"></div>
+</div>

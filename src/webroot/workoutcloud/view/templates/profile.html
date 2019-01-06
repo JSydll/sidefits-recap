@@ -1,0 +1,170 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">       
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 translate="MY_PROFILE"></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <span>
+                        <form name="profileIMG">
+                            <img ngf-thumbnail="profilePicFile" ng-show="profilePicFile" height="140" class="img-rounded profile-picture"/>
+                            <img ng-src="images/user/profile/{{user.picPath}}" ng-show="!profilePicFile" class="img-rounded profile-picture"/>
+                            <br /><br />
+                            <div class="btn btn-grey" ngf-select ng-model="profilePicFile" name="profilePicFile" ngf-pattern="'image/*'"
+                                accept="image/*" ngf-capture="'other'" ngf-max-size="3MB" ngf-min-height="200" ngf-resize="{height: 200}">
+                                    <span translate="SELECT_IMAGE"></span>
+                            </div>
+                            <div ng-show="!profileIMG.profilePicFile.$valid && profilePicFile">
+                                <br />
+                                <div class="alert alert-warning"><span translate="ERROR_IMAGE_UPLOAD"></span></div>
+                            </div> 
+                            <br /><br />
+                            <i translate="IMAGE_INFO_PROFILE" class="text-muted"></i> 
+                        </form> 
+                    </span>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="hidden-xs col-sm-1 col-md-2"></div>
+                <div class="col-xs-12 col-sm-10 col-md-8">
+                    <h4 translate="PROFILE_INFO" style="color: #4cb09a;"></h4>
+                    <div class="input-group wide-margin">
+                        <span class="input-group-addon" id="displayName" translate="USERNAME"></span>
+                        <input type="text" class="form-control" ng-model="user.name" aria-describedby="displayName"/>
+                    </div>
+                    <div class="input-group wide-margin">
+                        <span class="input-group-addon" id="gender" translate="GENDER"></span>
+                        <div class="btn-group gender" role="group" aria-describedby="gender">
+                          <button type="button" class="btn btn-default btn-sm" ng-class="{'active' : user.gender == 'female'}" ng-click="setGender('female')"><i class="fa fa-female icon-xl"></i></button>
+                          <button type="button" class="btn btn-default btn-sm" ng-class="{'active' : user.gender == 'male'}" ng-click="setGender('male')"><i class="fa fa-male icon-xl"></i></button>
+                        </div>
+                    </div>
+                    <div class="input-group wide-margin">
+                        <span class="input-group-addon" id="email" translate="USERMAIL"></span>
+                        <input type="text" class="form-control" ng-model="user.email" aria-describedby="email"/>
+                    </div>
+                    <div class="wide-margin">
+                        <i class="glyphicon glyphicon-warning-sign text-warning"></i> <i class="text-muted" translate="CHANGE_EMAIL_ALERT"></i>
+                    </div>                       
+                    <div class="input-group wide-margin">
+                        <textarea class="form-control" ng-model="user.shortBio" rows="6" placeholder="{{'SHORT_BIO_PLACEHOLDER' | translate}}">{{user.shortBio}}</textarea>
+                        <br />
+                        <i class="text-muted" translate="SHORT_BIO"></i>
+                    </div>
+                    <div class="input-group wide-margin">
+                        <span class="input-group-addon" id="contact" translate="USERCONTACT"></span>
+                        <input type="text" class="form-control" ng-model="user.contact" aria-describedby="contact"/>
+                    </div>
+                    <div class="input-group wide-margin">
+                        <span translate="VISIBILITY_SETUP"></span> 
+                        <toggle-switch class="switch-default wide-margin" ng-model="user.visible" on-label="{{'VISIBLE' | translate}}" off-label="{{'NOT_VISIBLE' | translate}}"></toggle-switch>
+                        <br />
+                        <i class="text-muted" translate="ABOUT_VISIBILITY"></i>
+                    </div>               
+                </div>
+               <div class="hidden-xs col-sm-1 col-md-2"></div>
+            </div>
+            <div class="smallspace"></div>
+            <div class="row">
+                <div class="hidden-xs col-sm-1 col-md-2"></div>
+                <div class="col-xs-12 col-sm-10 col-md-8">
+                     <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="managePassword" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span translate="PROFILE_MANAGE_PASSWORD"></span> <span class="caret"></span>
+                        </button>
+                            <ul class="dropdown-menu" aria-labelledby="managePassword">  
+                                <li class="wide-margin">
+                                    <span class="text-muted" translate="PROFILE_PASSWORD_EXPLAINER"></span>
+                                </li>      
+                                <form method="post" ng-submit="setNewPassword(this)" name="managePasswordForm">
+                                <li class="wide-margin">
+                                    <div class="form-group has-feedback" ng-class="{ 'has-error' : managePasswordForm.newPassword.$invalid && managePasswordForm.newPassword.$dirty }">
+                                        <input password-strength class="form-control input-sm" type="password" name="newPassword" ng-model="newPassword" placeholder="New Password" required>
+                                        <span class="ion-key form-control-feedback"></span>
+                                        <div class="help-block text-danger" ng-if="managePasswordForm.newPassword.$dirty" ng-messages="managePasswordForm.newPassword.$error">
+                                            <div ng-message="required" ><span translate="PASSWORD_REQUIRED"></span></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="wide-margin">
+                                    <div class="form-group has-feedback" ng-class="{ 'has-error' : managePasswordForm.confirmPassword.$invalid && managePasswordForm.confirmPassword.$dirty }">
+                                        <input password-match="newPassword" class="form-control input-sm" type="password" name="confirmPassword" ng-model="confirmPassword" placeholder="Confirm Password">
+                                        <span class="ion-key form-control-feedback"></span>
+                                        <div class="help-block text-danger" ng-if="managePasswordForm.confirmPassword.$dirty" ng-messages="managePasswordForm.confirmPassword.$error">
+                                            <div ng-message="compareTo"><span translate="PASSWORD_MISSMATCH" ></span></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li class="wide-margin">
+                                    <button type="submit" ng-disabled="managePasswordForm.$invalid" class="btn btn-sm btn-block btn-primary"><span translate="PROFILE_SET_NEW_PASSWORD"></span></button>
+                                </li>
+                                </form>
+                            </ul>
+                    </div>
+                </div>    
+                <div class="hidden-xs col-sm-1 col-md-2"></div>
+            </div>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="hidden-xs col-sm-1 col-md-2"></div>
+                <div class="col-xs-12 col-sm-10 col-md-8">
+                    <h4 translate="USER_PREFERENCES" style="color: #4cb09a;"></h4>
+                    <i class="text-muted" translate="ABOUT_PREFERENCES"></i>
+                    <br /><br />
+                    <div class="row">
+                        <div class="col-xs-4"><h5 translate="MY_MOTIVES"></h5></div>
+                        <div class="col-xs-8 text-center">
+                            <div ng-repeat="motive in preferencesMotives" class="home-tile" ng-class="{'active': motive.selected}" ng-click="preferencesToggleTile(motive)">
+                                <div class="home-tile-indicator" ng-if="motive.selected"><i class="fa fa-check"></i></div>
+                                <img ng-src="images/app/customizer/{{currLang=='de_DE'?motive.motiveImg.de_DE:motive.motiveImg.en_EN}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col-xs-4"><h5 translate="MY_DIFFICULTY"></h5></div>
+                        <div class="col-xs-8 text-center">
+                            <rzslider
+                            rz-slider-model="preferencesDifficulty.min"
+                            rz-slider-high="preferencesDifficulty.max"
+                            rz-slider-options="preferencesDifficulty.options"></rzslider>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"><h5 translate="MY_FREQUENCY"></h5></div>
+                        <div class="col-xs-8 text-center">
+                            <rzslider
+                            rz-slider-model="preferencesFrequency.val"
+                            rz-slider-options="preferencesFrequency.options"></rzslider> <br />
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col-xs-4"><h5 translate="MY_DIMENSIONS"></h5></div>
+                        <div class="col-xs-8 text-center">
+                            <div ng-repeat="dim in dimensions" class="customizer-dim" ng-class="{'active': dim.selected}" ng-click="preferencesToggleDimension(dim)">
+                                <div class="customizer-dim-indicator" ng-if="dim.selected"><i class="fa fa-check"></i></div>
+                                <img ng-src="images/app/{{dim.selected?dim.dimImg.selected:dim.dimImg.normal}}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden-xs col-sm-1 col-md-2"></div>   
+            </div>
+            <div class="smallspace"></div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <button class="btn btn-primary btn-saveProfile" ng-click="updateProfile()">
+                        <span translate="SAVE_CHANGES"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bigspace"></div>
+</div>

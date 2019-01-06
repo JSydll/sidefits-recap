@@ -1,0 +1,30 @@
+<div ng-controller="SendMailCtrl">
+    <form method="post" ng-submit="sendMail()" name="emailForm">
+        <h5 translate="YOUR_DATA"></h5>
+        <div class="form-group has-feedback">
+            <input class="form-control input-lg" type="text" name="initiator-email" ng-model="mail.initiatorEmail" placeholder="Email" required autofocus>
+            <span class="ion-at form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input class="form-control input-lg" type="text" name="initiator-name" ng-model="mail.initiatorName" placeholder="Name" required>
+            <span class="ion-key form-control-feedback"></span>
+        </div>
+        <h5 translate="RECIPIENTS"></h5>
+        <textarea class="form-control" style="width: 100%" name="emailList" ng-model="mail.emailList" rows="3">
+            {{mail.initiatorEmail}}
+        </textarea>
+        <br />
+        <i class="text-muted" translate="ADD_RECIPIENTS"></i>
+        <h5 translate="SUBJECT"></h5>
+        <div class="form-group has-feedback">
+            <input class="form-control input-lg" type="text" name="subject" placeholder="{{'SUBJECT' | translate}}" ng-model="mail.subject" required>
+            <span class="ion-key form-control-feedback"></span>
+        </div>
+        <h5 translate="MESSAGE"></h5>             
+        <textarea class="form-control" style="width: 100%" ng-model="mail.message" name="message" rows="6" placeholder="{{'WRITE_A_MESSAGE' | translate}}">
+            {{mail.message}}
+        </textarea>
+        <div class="smallspace"></div>
+        <button type="submit" ng-disabled="emailForm.$invalid" class="btn btn-block btn-primary"><span translate="SEND"></span></button>
+    </form>
+</div>

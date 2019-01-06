@@ -1,0 +1,257 @@
+<!-- Workout full view -->
+<div ng-controller="fullWorkoutCtrl">
+<div class="container">
+    <!-- Header pane -->
+    <div class="row header-pane" ng-cloak>
+        <div class="header-pane-img"><img src="images/workouts/{{picPath}}" /></div>
+        <div class="header-pane-title">{{name}}</div>
+        <div class="header-pane-creator"><img src="images/user/profile/{{creator.picPath}}" ng-click="showCreator = !showCreator" class="img-circle"/>
+            <i class="glyphicon" style="position: absolute; z-index: 10; top: 95px; left: 95px;" ng-class="{'glyphicon-chevron-up': showCreator, 'glyphicon-chevron-down': !showCreator}" ng-click="showCreator = !showCreator"></i></div>
+        <div class="header-pane-love">
+            <span class="prev-love" ng-class="{'active': isLiked}" ng-click="likeDislike()"><i class="glyphicon glyphicon-heart"> </i></span>
+        </div>
+    </div>
+    <!-- Creator info pane -->
+    <div class="row creator-info" ng-show="showCreator" ng-cloak>
+        <h5><span translate="CREATED_BY"></span> <a ui-sref="content.user({uid : creator.user_id })"><i>{{creator.name}}</i></a></h5>
+        <blockquote style="margin: 0px;" class="pull-left">
+            <span class="text-muted">
+                <h5><i>{{creator.shortBio}}</i></h5>
+            </span>
+        </blockquote>
+        <button ng-show="!isCreator" class="btn btn-default creator-follow pull-right" ng-click="followUnfollow(this)">
+            <i class="fa fa-user-plus" ng-class="{'active': creator.isFollowed}" ></i>
+            <span translate="FOLLOW" ng-if="!creator.isFollowed"></span>
+            <span translate="UNFOLLOW" ng-if="creator.isFollowed" ng-class="{'active': creator.isFollowed}"></span>
+        </button>
+        <div class="clearfix"></div>
+        <h5 ng-show="creator.visible"><span translate="USERCONTACT"></span>: {{creator.contact}}</h5>
+    </div>
+    <!-- Workout stats -->
+    <div class="row workout-stats panel panel-default" ng-cloak>
+        <!-- Larger devices -->
+        <div class="hidden-xs row">
+            <div class="col-xs-12">
+                <div class="status-pane-estimates">
+                    <span id="est-time" class="col-sm-2">
+                        <span class="time-val">{{Math.floor(duration / 60)}} <span class="time-capt" translate="MINUTES"></span></span>
+                        <br />
+                        <span class="time-val">{{Math.floor(duration - (Math.floor(duration / 60))*60)}} <span class="time-capt" translate="SECONDS"></span></span>
+                    </span>
+                    <span class="col-sm-2">
+                        <span class="avg-difficulty">
+                            <div class="difficulty-img text-center">
+                                <img ng-src="images/app/Difficulty-{{Math.ceil(difficulty)}}.png" width="50px"/><br />
+                                <span class="count-val"><span class="count-capt" style="white-space: nowrap;">{{('DIFFICULTY' | translate) + ' ' + difficulty}}</span></span>
+                            </div>
+                        </span>
+                    </span>
+                    <span id="dimensions" class="col-sm-6">
+                        <span style="display: inline-block;">
+                            <div class="dimension-wrap pull-left">
+                                <span class="dimension-icon">
+                                    <img ng-src="{{dimensions[0] != 0 && 'images/app/Flex_full.png' || 'images/app/Flex_empty.png'}}" />
+                                </span>
+                                <span class="dimension-count" ng-class="{'active': dimensions[0] != 0}">{{Math.ceil(dimensions[0] * 100)}}%</span>
+                            </div>
+                            <div class="dimension-wrap pull-left">
+                                <span class="dimension-icon">
+                                    <img ng-src="{{dimensions[1] != 0 && 'images/app/Mstrength_full.png' || 'images/app/Mstrength_empty.png'}}" />
+                                </span>
+                                <span class="dimension-count" ng-class="{'active': dimensions[1] != 0}">{{Math.ceil(dimensions[1] * 100)}}%</span>
+                            </div>
+                            <div class="dimension-wrap pull-left">
+                                <span class="dimension-icon">
+                                    <img ng-src="{{dimensions[2] != 0 && 'images/app/Mendurance_full.png' || 'images/app/Mendurance_empty.png'}}" />
+                                </span>
+                                <span class="dimension-count" ng-class="{'active': dimensions[2] != 0}">{{Math.ceil(dimensions[2] * 100)}}%</span>
+                            </div>
+                            <div class="dimension-wrap pull-left">
+                                <span class="dimension-icon">
+                                    <img ng-src="{{dimensions[3] != 0 && 'images/app/Cardio_full.png' || 'images/app/Cardio_empty.png'}}" />
+                                </span>
+                                <span class="dimension-count" ng-class="{'active': dimensions[3] != 0}">{{Math.ceil(dimensions[3] * 100)}}%</span>
+                            </div>
+                            <span class="clearfix"></span>
+                        </span>
+                    </span>
+                    <span id="exercise-count" class="col-sm-2">
+                        <span class="count-val">{{exCount}} <br /><span class="count-capt" translate="EXERCISES"></span></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Small devices -->
+        <div class="hidden-sm hidden-md hidden-lg">
+            <div class="status-pane-estimates">
+                <div class="row">
+                    <span id="est-time" class="col-xs-4">
+                        <span class="time-val">{{Math.floor(duration / 60)}} <span class="time-capt" translate="MINUTES"></span> </span>
+                        <span class="time-val"> {{Math.floor(duration - (Math.floor(duration / 60))*60)}} <span class="time-capt" translate="SECONDS"></span></span>
+                    </span>
+                    <span class="col-xs-4">
+                        <span class="avg-difficulty">
+                            <div class="difficulty-img text-center">
+                                <img ng-src="images/app/Difficulty-{{Math.ceil(difficulty)}}.png" width="50px"/>
+                                <span class="count-val"><span class="count-capt" style="white-space: nowrap;">{{('DIFFICULTY' | translate) + ' ' + difficulty}}</span></span>
+                            </div>
+                        </span>
+                    </span>
+                    <span id="exercise-count" class="col-xs-4">
+                        <span class="count-val">{{exCount}} <br /><span class="count-capt" translate="EXERCISES"></span></span>
+                    </span>
+                </div>
+                <div class="row">
+                    <span id="dimensions" class="small col-xs-12">
+                        <span style="display: inline-block;">
+                        <div class="dimension-wrap pull-left">
+                            <span class="dimension-icon">
+                                <img ng-src="{{dimensions[0] != 0 && 'images/app/Flex_full.png' || 'images/app/Flex_empty.png'}}" />
+                            </span>
+                            <span class="dimension-count" ng-class="{'active': dimensions[0] != 0}">{{Math.ceil(dimensions[0] * 100)}}%</span>
+                        </div>
+                        <div class="dimension-wrap pull-left">
+                            <span class="dimension-icon">
+                                <img ng-src="{{dimensions[1] != 0 && 'images/app/Mstrength_full.png' || 'images/app/Mstrength_empty.png'}}" />
+                            </span>
+                            <span class="dimension-count" ng-class="{'active': dimensions[1] != 0}">{{Math.ceil(dimensions[1] * 100)}}%</span>
+                        </div>
+                        <div class="dimension-wrap pull-left">
+                            <span class="dimension-icon">
+                                <img ng-src="{{dimensions[2] != 0 && 'images/app/Mendurance_full.png' || 'images/app/Mendurance_empty.png'}}" />
+                            </span>
+                            <span class="dimension-count" ng-class="{'active': dimensions[2] != 0}">{{Math.ceil(dimensions[2] * 100)}}%</span>
+                        </div>
+                        <div class="dimension-wrap pull-left">
+                            <span class="dimension-icon">
+                                <img ng-src="{{dimensions[3] != 0 && 'images/app/Cardio_full.png' || 'images/app/Cardio_empty.png'}}" />
+                            </span>
+                            <span class="dimension-count" ng-class="{'active': dimensions[3] != 0}">{{Math.ceil(dimensions[3] * 100)}}%</span>
+                        </div>
+                        <span class="clearfix"></span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="prev-tags">
+                    &nbsp;&nbsp;&nbsp;Tags: <span class="prev-exercise" ng-repeat="tag in tags track by $index"><i class="glyphicon glyphicon-tag"></i> {{tag}}</span>
+                </div>
+                <div style="width: 100%; height: 10px"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Main data area -->
+    <div class="row workout-data panel panel-default" ng-cloak>
+        <div id="plan-data">
+            <ul class="plan-data-map" ng-model="planData">
+                <li class="plan-data-round" ng-repeat="round in planData track by $index">
+                    <div>
+                        <div class="round-title">
+                            <!-- WORKAROUND: Round count only avaliable for workout IDs > 73  -->
+                            <span class="pull-left">{{ workout_id < 74 ? '1' : '' }}{{round.count}} x {{round.title}} {{$index + 1}}</span>
+                            <span class="clearfix"></span>
+                        </div>
+                        <ul class="plan-data-map" ng-model="round.exercises">
+                            <li class="plan-data-exercise" ng-repeat="exercise in round.exercises track by $index">
+                                <div class="divider" ng-if="exercise != round.exercises[0]"></div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-8 exercise-title">
+                                        {{exercise.title}}
+                                    </div>
+                                    <div class="col-xs-6 col-md-4">
+                                        <span class="exercise-modus" ng-if="exercise.modus=='reps'">
+                                            <span class="count-val">{{exercise.count}} <span class="count-capt" translate="REP"></span></span>
+                                        </span>
+                                        <span class="exercise-modus" ng-if="exercise.modus=='time'">
+                                            <span class="count-val" ng-if="Math.floor(exercise.count / 60)!=0">{{Math.floor(exercise.count / 60)}} <span class="count-capt" translate="MINUTES"></span></span>
+                                            <span class="count-val">{{exercise.count - (Math.floor(exercise.count / 60))*60}} <span class="count-capt" translate="SECONDS"></span></span>
+                                        </span>
+                                        <span class="exercise-modus" ng-if="exercise.modus=='distance'">
+                                            <span class="count-val" ng-if="Math.floor(exercise.count / 1000)!=0">{{Math.floor(exercise.count / 1000)}} <span class="count-capt" translate="KMETERS"></span></span>
+                                            <span class="count-val">{{exercise.count - (Math.floor(exercise.count / 1000))*1000}} <span class="count-capt" translate="METERS"></span></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div id="workout-annotations" class="well" ng-show="annotations.length">
+                <h3 translate="DESCRIPTION_HEADLINE"></h3>
+                <span class="text-muted">{{annotations}}</span>
+            </div>
+        </div>
+        <div id="share-download">
+                <button class="btn btn-block btn-social btn-facebook" socialshare
+                   socialshare-provider="facebook"
+                   socialshare-type="feed"
+                   socialshare-text="{{name}}"
+                   socialshare-caption="WorkoutCloud"
+                   socialshare-description="{{sharingText}}"
+                   socialshare-media="https://workoutcloud.net/images/workouts/{{picPath}}"
+                   socialshare-url="https://workoutcloud.net/#!/workout/{{workout_id}}"
+                   socialshare-source="https://workoutcloud.net/#!/workout/{{workout_id}}"
+                   socialshare-redirect-uri="https://facebook.com/"
+                   socialshare-via="177005462647097">
+                   <i class="fa fa-facebook"></i> <span translate="SHARE_ON_FB"></span>
+               </button>
+            <br />
+            <a href="{{pdfPath}}" target="_blank" class="btn btn-block btn-google"><i class="fa fa-file-pdf-o"></i> <span translate="DOWNLOAD_PDF"></span></a>
+            <button class="btn btn-block btn-default" ui-sref="modal.sendMail({workoutName: name, workoutURL: 'https://workoutcloud.net/#!/workout/' + workout_id})" ui-sref-opts="{location: false}"><i class="glyphicon glyphicon-envelope"></i> <span translate="SEND_BY_EMAI"></span></button>
+            <button class="btn btn-block btn-default" ng-show="isCreator" ng-click="editWorkout()"><i class="glyphicon glyphicon-edit"></i> <span translate="EDIT_WORKOUT"></span></button>
+        </div>
+        <div class="clearfix"></div>
+        <div id="exercise-explanations">
+            <h3 translate="EXERCISE_DESCR_HEADER"></h3>
+            <ul class="exercise-explain-map" ng-model="exerciseDescriptions">
+                <li ng-repeat="exercise in exerciseDescriptions">
+                    <div class="row" style="padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px solid #DEDEDE">
+                        <div class="col-xs-12 col-sm-5 edescr-content">
+                            <div class="edescr-headline"><span>{{exercise.name}}</span></div>
+                            <div class="edescr-text hidden-xs"><span>{{exercise.fullDescr}}</span></div>
+                        </div>
+                        <div class="col-xs-12 col-sm-5">
+                            <div class="edescr-img-wrap" ng-show="exercise.picPath.length">
+                                <span ng-repeat="img in exercise.picPath track by $index">
+                                    <a href="images/exercises/{{img}}-lg.jpg" data-toggle="lightbox" data-gallery="{{exercise.exercise_id}}">
+                                        <img class="edescr-img img-rounded" src="images/exercises/{{img}}-sm.jpg" srcset="images/exercises/{{img}}-m.jpg 1000w, images/exercises/{{img}}-lg.jpg 2000w" />
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="edescr-text hidden-sm hidden-md hidden-lg"><span>{{exercise.fullDescr}}</span></div>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 edescr-info">
+                            <!-- <span class="edescr-difficulty">{{exercise.difficulty}}</span><br />
+                            <span class="edescr-equipment">{{exercise.equipment}}</span> -->
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="disclaimer">
+            <span class="text-muted" translate="WORKOUT_DISCLAIMER"></span>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Create workout button -->
+<div id="btn-create-workout">
+	<a ui-sref="content.creator" class="hidden-xs"><img class="add-workout" src="images/app/create_workout_button.png" alt="Sidefits" /></a>
+    <a ui-sref="content.creator" class="visible-xs-block"><img class="add-workout" src="images/app/Add_workout_Button.png" alt="Sidefits" /></a>
+</div>
+
+<!-- Update meta tags -->
+<update-title title="{{name}}"></update-title>
+<update-meta property="og:title" content="{{name}}"></update-meta>
+<update-meta property="og:description" content="{{sharingText}}"></update-meta>
+<update-meta property="og:url" content="https://workoutcloud.net/#!/workout/{{workout_id}}"></update-meta>
+<update-meta property="og:image" content="https://workoutcloud.net/images/workouts/{{picPath}}"></update-meta>
+<update-meta property="og:image:secure_url" content="https://workoutcloud.net/images/workouts/{{picPath}}"></update-meta>

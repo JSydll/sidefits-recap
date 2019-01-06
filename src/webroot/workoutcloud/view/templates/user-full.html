@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <img ng-src="images/user/profile/{{user.picPath}}" style="width: 100%" class="img-rounded profile-picture"/>    
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 style="color: #4cb09a">{{user.name}}</h3>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-xs-12">
+                            User stats
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="well well-default">{{user.shortBio}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5 ng-show="user.visible"><span translate="USERCONTACT"></span>: <span ng-bind-html="user.contact"></span></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button ng-show="!isMe" class="btn btn-default creator-follow" ng-click="followUnfollow(this)">
+                                <i class="fa fa-user-plus" ng-class="{'active': user.isFollowed}" ></i>
+                                <span translate="FOLLOW" ng-if="!user.isFollowed"></span>
+                                <span translate="UNFOLLOW" ng-if="user.isFollowed" ng-class="{'active': user.isFollowed}"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="smallspace"></div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>Workouts</h4>   
+                </div>
+            </div>   
+            <div class="row">
+                <div class="col-xs-12">
+                    <span class="u-sample-workout pull-left" ng-repeat="workout in user.sampleWorkouts">
+                        <a ui-sref="content.workout({wid : workout.workout_id })">
+                            <img class="img-rounded" src="images/workouts/{{workout.picPath}}"/><br />
+                            <span class="u-sample-workout-title">{{workout.name | limitTo: 25}}...</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>     
+    </div>
+    <div class="bigspace"></div>
+</div>

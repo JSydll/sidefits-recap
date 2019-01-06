@@ -1,0 +1,54 @@
+﻿<!-- MY FAVORITES -->
+<div ng-controller="favoritesCtrl">
+<div class="container">
+    <!-- Section: Filter options -->
+    <!-- <div class="row" ng-cloak>
+        <div class="col-md-1 col-xs-1"></div>
+        <div id="welcome-image" class="col-md-3 hidden-xs">
+        <div class="col-md-1 col-xs-1"></div>
+    </div>
+
+    <div class="row divider"></div> -->
+
+
+    <!-- Section: Favoite Workouts -->
+    <div id="fav-workouts-container" ng-cloak>
+        <h4 translate="FAVORITES"></h4>
+        <div class="workout-preview" ng-repeat="workout in workoutList.favs" ng-show="workoutList.favs.length" ng-include="'templates/workout-single.html'">
+        </div>
+        <div ng-hide="workoutList.favs.length" translate="NO_FAVS_FOUND"></div>
+    </div>
+    <!-- Load more results -->
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary btn-block" ng-show="loadingEnabled.favs&&workoutList.favs.length" ng-click="getFavorites()"><span translate="LOAD_MORE"></span></button>
+        </div>
+    </div>
+    
+    <div class="middlespace"></div>
+    <div class="row divider"></div>
+    
+    <!-- Section: Created Workouts -->
+    <div id="created-workouts-container" ng-cloak>
+        <h4 translate="CREATED"></h4>
+        <div class="workout-preview" ng-repeat="workout in workoutList.created" ng-show="workoutList.created.length" ng-include="'templates/workout-single.html'">
+        </div>
+        <div ng-hide="workoutList.created.length" translate="NO_CREATED_FOUND"></div>
+    </div>
+    <!-- Load more results -->
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary btn-block" ng-show="loadingEnabled.created&&workoutList.created.length" ng-click="getCreated()"><span translate="LOAD_MORE"></span></button>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- Create workout button -->
+<div id="btn-create-workout">
+	<a ui-sref="content.creator" class="hidden-xs"><img class="add-workout" src="images/app/create_workout_button.png" alt="Sidefits" /></a>
+    <a ui-sref="content.creator" class="visible-xs-block"><img class="add-workout" src="images/app/Add_workout_Button.png" alt="Sidefits" /></a>
+</div>
+
+<div class="middlespace"></div>

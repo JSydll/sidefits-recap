@@ -1,0 +1,104 @@
+﻿<!-- Mobile view of a workout -->
+<div class="row hidden-md hidden-lg" ng-cloak>
+        <div class="wo-prev panel panel-default">
+            <div class="prev-top">
+                <a ui-sref="content.workout({wid : workout.workout_id })"><div class="prev-img"><img ng-src="images/workouts/{{workout.picPath}}" /></div></a>
+                <div class="prev-head">
+                    <div class="prev-creator pull-left"><img ng-src="images/user/profile/{{workout.creator_picPath}}" class="img-circle" /></div>
+                    <a ui-sref="content.workout({wid : workout.workout_id })"><div class="prev-title pull-right">{{workout.name}}</div></a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="prev-info">
+                    <div class="prev-tags">
+                        <span class="prev-tag nowrap" ng-repeat="exercise in workout.exerciseNames | limitTo: 3 track by $index ">{{exercise.name}}</span>
+                        <span class="nowrap" ng-show="workout.exerciseNames.length > 3">+ {{workout.exerciseNames.length - 3}} <span translate="MORE_SM"></span>...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="prev-bottom">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <span class="est-time pull-left">
+                            <span class="time-val" ng-show="Math.floor(workout.duration / 60) > 0">{{Math.floor(workout.duration / 60)}} <span class="time-capt" translate="MINUTES"></span> <br /></span>
+                            <span class="time-val"> {{Math.floor(workout.duration - (Math.floor(workout.duration / 60))*60)}} <span class="time-capt" translate="SECONDS"></span></span>
+                        </span>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="exercise-count pull-left">
+                            <span class="count-val">{{workout.exCount}} <br /><span class="count-capt" translate="EXERCISES"></span></span>
+                        </span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span class="avg-difficulty pull-left">
+                            <div class="difficulty-img"><img ng-src="images/app/Difficulty-{{Math.ceil(workout.difficulty)}}.png" width="50px"/></div>
+                        </span>
+                    </div>
+                    <div class="col-xs-5">
+                        <span class="prev-love pull-right" ng-class="{'active': workout.isLiked}" ng-click="likeDislike(workout)"><i class="glyphicon glyphicon-heart"> </i></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+</div>
+
+<!-- Desktop view of workout -->
+<div class="row hidden-xs hidden-sm" ng-cloak>    
+        <div class="wo-prev panel panel-default">
+            <div class="row">
+                <div class="col-md-2 prev-left">
+                    <a ui-sref="content.workout({wid : workout.workout_id })"><div class="prev-img"><img ng-src="images/workouts/{{workout.picPath}}" class="img-rounded"/></div></a>
+                    <div class="prev-love" ng-class="{'active': workout.isLiked}" ng-click="likeDislike(workout)"><i class="glyphicon glyphicon-heart"> </i></div>
+                </div>
+                <div class="col-md-10 prev-right">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a ui-sref="content.workout({wid : workout.workout_id })"><div class="prev-title">{{workout.name}}</div></a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="prev-exercise nowrap" ng-repeat="exercise in workout.exerciseNames | limitTo: 3 track by $index">{{exercise.name}}</span>
+                                    <span class="nowrap" ng-show="workout.exerciseNames.length > 3">+ {{workout.exerciseNames.length - 3}} <span translate="MORE_SM"></span>...</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="prev-tag nowrap" ng-repeat="tag in workout.tags | limitTo: 3 track by $index"><i class="glyphicon glyphicon-tag"></i>{{tag}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span class="est-time pull-left">
+                                        <span class="time-val" ng-show="Math.floor(workout.duration / 60) > 0">{{Math.floor(workout.duration / 60)}} <span class="time-capt" translate="MINUTES"></span> <br /></span>
+                                        <span class="time-val"> {{Math.floor(workout.duration - (Math.floor(workout.duration / 60))*60)}} <span class="time-capt" translate="SECONDS"></span></span>
+                                    </span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="exercise-count pull-left">
+                                        <span class="count-val">{{workout.exCount}} <br /><span class="count-capt" translate="EXERCISES"></span></span>
+                                    </span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="avg-difficulty pull-left">
+                                        <div class="difficulty-img"><img ng-src="images/app/Difficulty-{{Math.ceil(workout.difficulty)}}.png" width="50px"/></div>
+                                    </span>
+                                </div>
+                                <div class="col-md-4"></div>
+                                <div class="clearfix"></div>
+                            </div>           
+                        </div>
+                        <div class="col-md-1">
+                            <div class="prev-creator pull-right"><img ng-src="images/user/profile/{{workout.creator_picPath}}" class="img-circle" /></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

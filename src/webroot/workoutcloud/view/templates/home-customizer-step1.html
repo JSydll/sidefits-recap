@@ -1,0 +1,19 @@
+﻿<!-- Tiles panel -->
+<div class="row text-center wide-margin">
+    <div class="col-md-1 hidden-xs hidden-sm"></div>
+    <div class="col-md-10 col-sm-12">
+        <h4 translate="CUSTOMIZER_MOTIVES_HEADLINE"></h4>
+    </div>
+    <div class="col-md-1 hidden-xs hidden-sm"></div>
+</div>
+<!-- Tiles sections -->
+<div class="row" ng-cloak>
+    <div class="hidden-xs hidden-sm col-md-1"></div>
+    <div class="col-sm-12 col-md-10 text-center">
+        <div ng-repeat="motive in customizerMotives" class="home-tile" ng-class="{'active': motive.selected}" ng-click="customizerToggleTile(motive)">
+            <div class="home-tile-indicator" ng-if="motive.selected"><i class="fa fa-check"></i></div>
+            <img ng-src="images/app/customizer/{{currLang=='de_DE'?motive.motiveImg.de_DE:motive.motiveImg.en_EN}}" />
+        </div>
+    </div>
+    <div class="hidden-xs hidden-sm col-md-1"></div>
+</div>  

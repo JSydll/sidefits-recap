@@ -1,0 +1,99 @@
+/* --------------------------------------
+=========================================
+COLOR : BLUE MUNSELL
+
+MAIN COLOR CODE: #0196a7
+
+DEEP COLOR CODE: #006f7c
+=========================================
+----------------------------------------- */
+
+.color-overlay {
+    background: rgba(76, 176, 169, 0.85);
+}
+
+.standard-button {
+    background: #4d4d4d;
+}
+.col-link {
+    color: #4CB0A9;
+}
+.col-link:hover {
+    color: #FFFFFF;    
+}
+.standard-button2 {
+    background: #4CB0A9;
+}
+
+.standard-button2:hover {
+    background: #fff;
+    color: #000000;
+}
+
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary.active, 
+.open .dropdown-toggle.btn-primary {
+    background: #4CB0A9;
+    border-color: inherit;
+}
+
+.colored-line,
+.colored-line-left {
+    background: #4CB0A9;
+}
+
+.main-color {
+    color: #4CB0A9;
+}
+
+.color-bg {
+	background: #4CB0A9;
+	color: #FFFFFF;
+}
+
+.features .feature:hover .icon-container .icon {
+    background: #4CB0A9;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    -webkit-box-shadow: 0px 0px 0px 2px #4CB0A9;
+            box-shadow: 0px 0px 0px 2px #4CB0A9;
+}
+
+.features .feature .icon-container .icon {
+    border: 1px solid #4CB0A9;
+    color: #4CB0A9;
+}
+
+.feature-list li i {
+    color: #4CB0A9;
+}
+
+.services .single-service .service-icon,
+.services .single-service h3 {
+    color: #4CB0A9;
+}
+
+.screenshots .owl-theme .owl-controls .owl-page span {
+    background: #4CB0A9;
+}
+
+footer .contact-button {
+    border: 2px solid #4CB0A9;
+    color: #fff;
+}
+
+footer .contact-button:hover {
+    background: #4CB0A9;
+}
+
+footer .contact-box .expanded-contact-form .input-box:active,
+footer .contact-box .expanded-contact-form .textarea-box:active,
+footer .contact-box .expanded-contact-form .input-box:focus,
+footer .contact-box .expanded-contact-form .textarea-box:focus {
+    border: 1px solid #4CB0A9;
+}
+
+footer .social-icons li a:hover {
+    color: #4CB0A9;
+}

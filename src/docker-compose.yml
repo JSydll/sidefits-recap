@@ -4,9 +4,9 @@ volumes:
   mysql-data:
     driver: local
     driver_opts:
-      type: none
-      o: bind
-      device: ${PWD}/mysql/data
+      type: "none"
+      o: "bind"
+      device: "${PWD}/mysql/data"
 
 services:
   php-apache:

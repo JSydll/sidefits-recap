@@ -1,0 +1,44 @@
+﻿<!-- MY FOLLOWERS -->
+<div ng-controller="followersCtrl">
+<div class="container">
+    <!-- Section: Followed by me -->
+    <div id="followed-byme-container" ng-cloak>
+        <h4 translate="FOLLOWERS_BYME"></h4>
+        <div class="follower-preview" ng-repeat="user in followerList.byMe" ng-show="followerList.byMe.length" ng-include="'templates/user-single.html'">
+        </div>
+        <div ng-hide="followerList.byMe.length" translate="NO_FOLLOWER_BYME_FOUND"></div>
+    </div>
+    <!-- Load more results -->
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary btn-block" ng-show="loadingEnabled.byMe&&followerList.byMe.length" ng-click="getFollows()"><span translate="LOAD_MORE"></span></button>
+        </div>
+    </div>
+    
+    <div class="middlespace"></div>
+    <div class="row divider"></div>
+    
+    <!-- Section: Following me -->
+    <div id="following-me-container" ng-cloak>
+        <h4 translate="FOLLOWERS_TOME"></h4>
+        <div class="follower-preview" ng-repeat="user in followerList.toMe" ng-show="followerList.toMe.length" ng-include="'templates/user-single.html'">
+        </div>
+        <div ng-hide="followerList.toMe.length" translate="NO_FOLLOWER_TOME_FOUND"></div>
+    </div>
+    <!-- Load more results -->
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary btn-block" ng-show="loadingEnabled.toMe&&followerList.toMe.length" ng-click="getFollowed()"><span translate="LOAD_MORE"></span></button>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- Create workout button -->
+<div id="btn-create-workout">
+	<a ui-sref="content.creator" class="hidden-xs"><img class="add-workout" src="images/app/create_workout_button.png" alt="Sidefits" /></a>
+    <a ui-sref="content.creator" class="visible-xs-block"><img class="add-workout" src="images/app/Add_workout_Button.png" alt="Sidefits" /></a>
+</div>
+
+<div class="middlespace"></div>

@@ -1,0 +1,51 @@
+﻿<!-- Difficulty panel -->
+<div class="row text-center wide-margin">
+    <div class="col-md-1 hidden-xs hidden-sm"></div>
+    <div class="col-md-10 col-sm-12">
+        <h4 translate="CUSTOMIZER_CIRCUMSTANCES_HEADLINE"></h4>
+    </div>
+    <div class="col-md-1 hidden-xs hidden-sm"></div>
+</div>
+<div class="panel panel-customizer">
+    <div style="height: 10px; width: 100%"></div>
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-4"><h5><span translate="CUSTOMIZER_GENDER_LABEL"></span> &nbsp;&nbsp; <span style="cursor: pointer" uib-tooltip="{{ 'CUSTOMIZER_GENDER_EXPLAIN' | translate }}" uib-tooltip-trigger="outsideClick" uib-tooltip-placement="right"><i class="fa fa-question-circle"></i></span></h5></div>
+        <div class="col-xs-4">
+            <div class="btn-group gender" role="group" aria-label="...">
+              <button type="button" class="btn btn-default btn-sm" ng-class="{'active' : customizerGender == 'female'}" ng-click="setCustomizerGender('female')"><i class="fa fa-female icon-xl"></i></button>
+              <button type="button" class="btn btn-default btn-sm" ng-class="{'active' : customizerGender == 'male'}" ng-click="setCustomizerGender('male')"><i class="fa fa-male icon-xl"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10"><h5><span translate="CUSTOMIZER_DIFFICULTY_LABEL"></span> &nbsp;&nbsp; <span style="cursor: pointer" uib-tooltip="{{ 'CUSTOMIZER_DIFFICULTY_EXPLAIN' | translate }}" uib-tooltip-trigger="outsideClick" uib-tooltip-placement="right"><i class="fa fa-question-circle" ></i></span></h5></div>
+        <div class="col-xs-1"></div>
+    </div>
+    <div class="row" ng-cloak>
+        <div class="col-xs-1 col-sm-3"></div>
+        <div class="col-xs-10 col-sm-6 text-center">
+            <rzslider
+            rz-slider-model="customizerDifficulty.min"
+            rz-slider-high="customizerDifficulty.max"
+            rz-slider-options="customizerDifficulty.options"></rzslider> <br /><br />
+        </div>
+        <div class="col-xs-1 col-sm-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10"><h5 translate="CUSTOMIZER_FREQ_LABEL"></h5></div>
+        <div class="col-xs-1"></div>
+    </div>
+    <div class="row" ng-cloak>
+        <div class="col-xs-1 col-sm-3"></div>
+        <div class="col-xs-10 col-sm-6 text-center">
+            <rzslider
+            rz-slider-model="customizerFrequency.val"
+            rz-slider-options="customizerFrequency.options"></rzslider>
+        </div>
+        <div class="col-xs-1 col-sm-3"></div>
+    </div>
+    <div class="smallspace"></div>
+</div>

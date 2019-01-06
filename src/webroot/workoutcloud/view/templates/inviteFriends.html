@@ -1,0 +1,45 @@
+<div ng-controller="InviteFriendsCtrl">
+    <form method="post" ng-submit="sendMail()" name="emailForm">
+        <br /><br />
+        <img ng-if="user.locale == 'en_EN'" src="images/app/BnL_Plan_Invite_Popup_EN.png" style="width: 100%; height: auto" alt="Together it's more fun - invite friends!" title="Together it's more fun - invite friends!" />
+        <img ng-if="user.locale == 'de_DE'" src="images/app/BnL_Plan_Invite_Popup_DE.png" style="width: 100%; height: auto" alt="Zusammen macht's mehr Spass - lade Freunde ein!" title="Zusammen macht's mehr Spass - lade Freunde ein!" />
+        <p style="text-align: center">
+            <br />
+            <span translate="ADVANTAGES_INVITING"></span>
+        </p>
+        <div class="divider"></div>
+        <button class="btn btn-block btn-social btn-facebook" socialshare
+            socialshare-provider="facebook"
+            socialshare-type="feed"
+            socialshare-text="Inspire and get inspired"
+            socialshare-caption="WorkoutCloud"
+            socialshare-description="{{'FB_SHARE_STATIC_TEXT' | translate}}"
+            socialshare-media="https://workoutcloud.net/images/app/cloud.jpg"
+            socialshare-url="https://workoutcloud.net/#!/home"
+            socialshare-source="https://workoutcloud.net/#!/home"
+            socialshare-redirect-uri="https://facebook.com/"
+            socialshare-via="177005462647097">
+            <i class="fa fa-facebook"></i> <span translate="FB_INVITE_FRIENDS_TEXT"></span>
+        </button>
+        <br />
+        <h5 translate="OR" style="width: 100%; text-align: center; font-style: italic"></h5>
+        <br />
+        <h5 translate="YOUR_DATA"></h5>
+        <div class="form-group has-feedback">
+            <input class="form-control input-lg" type="text" name="initiator-email" ng-model="mail.initiatorEmail" placeholder="Email" required autofocus>
+            <span class="ion-at form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input class="form-control input-lg" type="text" name="initiator-name" ng-model="mail.initiatorName" placeholder="Name" required>
+            <span class="ion-key form-control-feedback"></span>
+        </div>
+        <h5 translate="RECIPIENTS"></h5>
+        <textarea class="form-control" style="width: 100%" name="emailList" ng-model="mail.emailList" rows="3">
+            {{mail.initiatorEmail}}
+        </textarea>
+        <br />
+        <i class="text-muted" translate="ADD_RECIPIENTS"></i>
+        <div class="smallspace"></div>
+        <button type="submit" ng-disabled="emailForm.$invalid" class="btn btn-block btn-primary"><span translate="SEND"></span></button>
+    </form>
+</div>

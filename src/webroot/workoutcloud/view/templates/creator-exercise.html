@@ -1,0 +1,87 @@
+<!-- Exercise template -->
+<div class="panel panel-default">
+    <!-- Main view of exercise item -->
+    <div class="panel-heading exercise-main-panel">
+        <div class="row">
+            <div class="col-xs-4 col-sm-2">
+                <span class="exercise-count-prev" ng-click="item.status.open = !item.status.open" data-nodrag>
+                    <span>{{item.count}}</span>
+                    <span ng-if="item.modus == 'time'"><span translate="SECONDS"></span></span>
+                    <span ng-if="item.modus == 'reps'"><span translate="REP"></span></span>
+                    <span ng-if="item.modus == 'distance'"><span translate="METERS"></span></span>
+                </span>
+            </div>
+            <div class="col-xs-8 col-sm-6">
+                <span ng-click="item.status.open = !item.status.open" data-nodrag class="creator-exercise-title">{{item.title}}</span>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="pull-right" style="margin-top: -5px;">
+                    <span class="pull-left">
+                        <a class="btn btn-sm btn-creator-delete text-muted" data-nodrag ng-click="remove(this)" uib-tooltip="{{ 'TOOLTIPS_DELETE_EXERCISE' | translate }}" uib-tooltip-trigger="outsideClick" uib-tooltip-placement="bottom"><i class="glyphicon glyphicon-remove icon-xl"></i></a>
+                        <a class="btn btn-sm btn-creator-replace text-muted" data-nodrag ng-if="item.title != 'Pause'" ng-click="setReplacable(this)" uib-tooltip="{{ 'TOOLTIPS_REPLACE_EXERCISE' | translate }}" uib-tooltip-trigger="outsideClick" uib-tooltip-placement="bottom" ng-class="{'active' : (item.id == replacableModel.id)}"><i class="glyphicon glyphicon-transfer icon-xl"></i></a>
+                        <a class="btn btn-sm btn-creator-duplicate text-muted" ng-if="item.title != 'Pause'" data-nodrag ng-click="duplicate(this)" uib-tooltip="{{ 'TOOLTIPS_COPY_EXERCISE' | translate }}" uib-tooltip-trigger="outsideClick" uib-tooltip-placement="bottom"><i class="fa fa-clone icon-xl"></i></a>
+                    </span>
+                    <span class="btn btn-sm">
+                         <i class="glyphicon" data-nodrag ng-click="item.status.open = !item.status.open;" ng-class="{'glyphicon-chevron-up': item.status.open, 'glyphicon-chevron-down': !item.status.open}"></i>
+                    </span>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <!-- Edit data of exercise item -->
+    <div class="panel-body exercise-edit-panel" ng-show="item.status.open" data-nodrag>       
+        <!-- Responsive markup mobile -->
+        <!-- Set MODUS -->
+        <div class="row hidden-md hidden-lg text-center">
+            <div class="col-xs-12 col-sm-12">
+                 <div class="btn-group" role="group" aria-label="...">
+                  <button type="button" class="btn btn-default btn-sm" ng-if="item.execModi.indexOf('time') != -1" ng-class="{'active' : item.modus == 'time'}" ng-click="item.modus = 'time'" translate="TIME"></button>
+                  <button type="button" class="btn btn-default btn-sm" ng-if="item.execModi.indexOf('reps') != -1" ng-class="{'active' : item.modus == 'reps'}" ng-click="item.modus = 'reps'" translate="REPS"></button>
+                  <button type="button" class="btn btn-default btn-sm" ng-if="item.execModi.indexOf('distance') != -1" ng-class="{'active' : item.modus == 'distance'}" ng-click="item.modus = 'distance'" translate="DISTANCE"></button>
+                </div>
+            </div>
+        </div>
+        <div class="divider hidden-md hidden-lg"></div>
+        <div class="hidden-md hidden-lg"><br /></div>
+        <!-- Set COUNT -->
+        <div class="row hidden-md hidden-lg text-center">
+            <div class="col-xs-12 col-sm-12">
+                <div ng-if="item.modus == 'time'">
+                    <div class="input-group"><h-number ng-model="item.count" value="item.count" min="1" step="5" ></h-number><span class="input-group-addon"> <span translate="SECONDS"></span></span></div>
+                </div>
+                <div ng-if="item.modus == 'reps'">
+                    <div class="input-group"><h-number ng-model="item.count" value="item.count" min="1" step="1" ></h-number><span class="input-group-addon"> <span translate="REP"></span></span></div>
+                </div>
+                <div ng-if="item.modus == 'distance'">
+                    <div class="input-group"><h-number ng-model="item.count" value="item.count" min="1" step="10" ></h-number><span class="input-group-addon"> <span translate="METERS"></span></span></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Responsive markup desktop-->        
+        <div class="row hidden-xs hidden-sm">
+            <!-- Set MODUS -->
+            <div class="col-md-6">
+                 <div class="btn-group" role="group" aria-label="...">
+                  <button type="button" class="btn btn-default btn-sm" ng-if="item.execModi.indexOf('time') != -1" ng-class="{'active' : item.modus == 'time'}" ng-click="item.modus = 'time'" translate="TIME"></button>
+                  <button type="button" class="btn btn-default btn-sm" ng-if="item.execModi.indexOf('reps') != -1" ng-class="{'active' : item.modus == 'reps'}" ng-click="item.modus = 'reps'" translate="REPS"></button>
+                  <button type="button" class="btn btn-default btn-sm" ng-if="item.execModi.indexOf('distance') != -1" ng-class="{'active' : item.modus == 'distance'}" ng-click="item.modus = 'distance'" translate="DISTANCE"></button>
+                </div>
+            </div>
+            
+            <!-- Set COUNT -->
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="number" class="form-control" ng-model="item.count" value="item.count"/>
+                    <span class="input-group-addon">
+                        <span ng-if="item.modus == 'time'"> <span translate="SECONDS"></span></span>
+                        <span ng-if="item.modus == 'reps'"> <span translate="REP"></span></span>
+                        <span ng-if="item.modus == 'distance'"> <span translate="METERS"></span></span> 
+                    </span>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+

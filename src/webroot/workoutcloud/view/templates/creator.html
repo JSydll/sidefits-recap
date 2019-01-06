@@ -1,0 +1,261 @@
+<!-- CREATE WORKOUT -->
+<div ng-controller="workoutCreatorCtrl">
+<!-- Loading circle -->
+    <div class="loading-spinner-creator" ng-cloak ng-show="savingInProgress" data-loading>
+        <div class="loading-spinner img-rounded">
+            <img src="images/app/loading-spinner.png" srcset="images/app/loading-spinner.GIF" alt=""/><br /><br />
+            <span translate="CREATOR_SAVING_PROGRESS"></span>
+        </div>
+    </div>
+<!-- Section: Information Pane --> 
+<div class="container">     
+    <div class="row">
+        <div class="col-md-1 col-xs-1"></div>
+        <div id="status-pane" class="panel panel-primary col-md-10 col-xs-10" ng-cloak>
+            <div class="panel-body">
+                <!-- Larger devices -->
+                <div class="hidden-xs">
+                    <div class="status-pane-estimates">
+                        <span id="est-time" class="col-sm-2">
+                            <span class="time-val">{{Math.floor(estTime / 60)}} <span class="time-capt" translate="MINUTES"></span></span>
+                            <br />
+                            <span class="time-val">{{Math.floor(estTime - (Math.floor(estTime / 60))*60)}} <span class="time-capt" translate="SECONDS"></span></span>
+                        </span>
+                        <span class="col-sm-2">
+                            <span class="avg-difficulty pull-left">
+                                <span class="count-val">{{estDifficulty}}<br /><span class="count-capt" translate="DIFFICULTY"></span></span>
+                            </span>
+                        </span>
+                        <span id="dimensions" class="col-sm-6">
+                            <span style="display: inline-block;">
+                                <div class="dimension-wrap pull-left">
+                                    <span class="dimension-icon">
+                                        <img ng-src="{{dimensions[0] != 0 && 'images/app/Flex_full.png' || 'images/app/Flex_empty.png'}}" />
+                                    </span>
+                                    <span class="dimension-count" ng-class="{'active': dimensions[0] != 0}">{{Math.ceil(dimensions[0] * 100)}}%</span>
+                                </div>
+                                <div class="dimension-wrap pull-left">
+                                    <span class="dimension-icon">
+                                        <img ng-src="{{dimensions[1] != 0 && 'images/app/Mstrength_full.png' || 'images/app/Mstrength_empty.png'}}" />
+                                    </span>
+                                    <span class="dimension-count" ng-class="{'active': dimensions[1] != 0}">{{Math.ceil(dimensions[1] * 100)}}%</span>
+                                </div>
+                                <div class="dimension-wrap pull-left">
+                                    <span class="dimension-icon">
+                                        <img ng-src="{{dimensions[2] != 0 && 'images/app/Mendurance_full.png' || 'images/app/Mendurance_empty.png'}}" />
+                                    </span>
+                                    <span class="dimension-count" ng-class="{'active': dimensions[2] != 0}">{{Math.ceil(dimensions[2] * 100)}}%</span>
+                                </div>
+                                <div class="dimension-wrap pull-left">
+                                    <span class="dimension-icon">
+                                        <img ng-src="{{dimensions[3] != 0 && 'images/app/Cardio_full.png' || 'images/app/Cardio_empty.png'}}" />
+                                    </span>
+                                    <span class="dimension-count" ng-class="{'active': dimensions[3] != 0}">{{Math.ceil(dimensions[3] * 100)}}%</span>
+                                </div>
+                                <span class="clearfix"></span>
+                            </span>
+                        </span>
+                        <span id="exercise-count" class="col-sm-2">
+                            <span class="count-val">{{exCount}} <br /><span class="count-capt" translate="EXERCISES"></span></span>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Small devices -->
+                <div class="hidden-sm hidden-md hidden-lg">
+                    <div class="status-pane-estimates">
+                        <div class="row">
+                            <span id="est-time" class="col-xs-5">
+                                <span class="time-val">{{Math.floor(estTime / 60)}} <span class="time-capt" translate="MINUTES"></span> </span>
+                                <span class="time-val"> {{Math.floor(estTime - (Math.floor(estTime / 60))*60)}} <span class="time-capt" translate="SECONDS"></span></span>
+                            </span>
+                            <span class="col-xs-4">
+                                <span class="avg-difficulty pull-left">
+                                    <span class="count-val">{{estDifficulty}}<br /><span class="count-capt" translate="DIFFICULTY"></span></span>
+                                </span>
+                            </span>
+                            <span id="exercise-count" class="col-xs-3">
+                                <span class="count-val">{{exCount}} <br /><span class="count-capt" translate="EXERCISES"></span></span>
+                            </span>
+                        </div>
+                        <div class="row">
+                            <span id="dimensions" class="small col-xs-12">
+                                <span style="display: inline-block;">
+                                <div class="dimension-wrap pull-left">
+                                    <span class="dimension-icon">
+                                        <img ng-src="{{dimensions[0] != 0 && 'images/app/Flex_full.png' || 'images/app/Flex_empty.png'}}" />
+                                    </span>
+                                    <span class="dimension-count" ng-class="{'active': dimensions[0] != 0}">{{Math.ceil(dimensions[0] * 100)}}%</span>
+                                </div>
+                                <div class="dimension-wrap pull-left">
+                                    <span class="dimension-icon">
+                                        <img ng-src="{{dimensions[1] != 0 && 'images/app/Mstrength_full.png' || 'images/app/Mstrength_empty.png'}}" />
+                                    </span>
+                                    <span class="dimension-count" ng-class="{'active': dimensions[1] != 0}">{{Math.ceil(dimensions[1] * 100)}}%</span>
+                                </div>
+                                <div class="dimension-wrap pull-left">
+                                    <span class="dimension-icon">
+                                        <img ng-src="{{dimensions[2] != 0 && 'images/app/Mendurance_full.png' || 'images/app/Mendurance_empty.png'}}" />
+                                    </span>
+                                    <span class="dimension-count" ng-class="{'active': dimensions[2] != 0}">{{Math.ceil(dimensions[2] * 100)}}%</span>
+                                </div>
+                                <div class="dimension-wrap pull-left">
+                                    <span class="dimension-icon">
+                                        <img ng-src="{{dimensions[3] != 0 && 'images/app/Cardio_full.png' || 'images/app/Cardio_empty.png'}}" />
+                                    </span>
+                                    <span class="dimension-count" ng-class="{'active': dimensions[3] != 0}">{{Math.ceil(dimensions[3] * 100)}}%</span>
+                                </div>
+                                <span class="clearfix"></span>
+                                </span>
+                            </span>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 col-xs-1"></div>
+    </div>
+
+<!-- Section: Workout Builder -->
+    <div class="row">
+        <div class="col-md-2 hidden-xs"></div>
+        <div id="workout-creator" class="col-md-8 col-xs-12" ng-cloak>
+            <span class="text-muted text-center" style="font-weight: 300;" translate="CREATOR_EXPLAINER_TEXT"></span>
+        </div>
+        <div class="col-md-2 hidden-xs"></div>    
+    </div>
+    <div class="row">
+        <div class="col-md-2 hidden-xs"></div>
+        <div id="workout-creator" class="col-md-8 col-xs-12" ng-cloak>
+            <h3>
+                <div class="input-group workout-name-input-group">
+                    <input type="text" class="form-control workout-name-input" ng-model="name" value="{{name}}" onclick="this.value='';"/>
+                    <span class="input-group-addon input-invisible-addon">
+                        <i class="glyphicon glyphicon-pencil text-muted"></i>
+                    </span>
+                </div>
+            </h3>
+            <br />
+            <div ui-tree="workoutPlan" data-empty-placeholder-enabled="false">
+                <ol ui-tree-nodes ng-model="exerciseList" class="workout-round" >
+                    <li ng-repeat="item in exerciseList track by $index" class="workout-round" ui-tree-node ng-include="'templates/creator-structure.html'"></li>                    
+                    <li>
+                        <a class="btn btn-grey btn-creator-addRound btn-xs" data-nodrag ng-click="newRound(this)"><i class="glyphicon glyphicon-plus"></i> <span translate="ROUND"></span></a>
+                    </li>
+                </ol>                         
+            </div>
+        </div>
+        <div class="col-md-2 hidden-xs"></div>
+    </div>
+<!-- Section: Additional Information -->    
+    <div class="row">
+        <div class="col-md-2 hidden-xs"></div>
+        <div id="workout-addInfo" class="panel col-md-8 col-xs-12" ng-cloak>
+            <div class="addInfo">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4 translate="PREVIEW_IMG"></h4>
+                    </div>                  
+                </div>
+                <div class="row">
+                    <form name="prevIMG">             
+                        <div class="col-xs-12 col-md-4">
+                            <div id="prevPicThumb">
+                                <img ngf-thumbnail="prevPicFile" ng-show="prevPicFile" height="140" class="img-rounded"/>
+                                <img ng-src="images/workouts/default-sm.jpg" srcset="images/workouts/default-m.jpg w1000, images/workouts/default-lg.jpg w2000" ng-show="!prevPicFile && !isEdit" class="img-rounded"/>
+                                <img ng-src="images/workouts/{{picPath}}" height="140" ng-show="isEdit" class="img-rounded"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-8">
+                            <br /><br />
+                            <div class="btn btn-grey" ngf-select ng-model="prevPicFile" name="prevPicFile" ngf-pattern="'image/*'"
+                            accept="image/*" ngf-capture="'other'" ngf-max-size="3MB" ngf-min-height="300">
+                                <span translate="SELECT_IMAGE"></span>
+                            </div>
+                            <div ng-show="!prevIMG.prevPicFile.$valid && prevPicFile">
+                                <br />
+                                <div class="alert alert-warning"><span translate="ERROR_IMAGE_UPLOAD"></span></div>
+                            </div>
+                            <br /><br />
+                            <i translate="IMAGE_PLACEMENT_INFO" class="text-muted"></i>
+                        </div>
+                    </form> 
+                </div>                
+            </div>
+            <div class="divider"></div>
+            <div class="addInfo"><h4 translate="DESCRIPTION_OPT"></h4>
+                 <textarea class="form-control" ng-model="description" rows="6" placeholder="{{'DESCRIPTION_PLACEHOLDER' | translate}}">{{description}}</textarea>
+            </div>
+            <div class="divider"></div>
+            <div class="addInfo"><h4 translate="TAGS"></h4>
+                <div ng-model="tagCloudList">
+                    <!-- Larger devices -->
+                    <div class="row hidden-xs">
+                        <div class="col-sm-6">
+                            <!-- Most relevant tags -->
+                            <span ng-repeat="tag in tagCloudList track by $index">
+                                <button type="button" class="btn btn-primary btn-tag btn-sm" ng-model="tag.selected" uib-btn-checkbox uib-btn-checkbox-true="true" uib-btn-checkbox-false="false">{{tag.tagname}} &nbsp;&nbsp;<i ng-if="tag.selected" class="glyphicon glyphicon-remove-sign"></i></button>
+                            </span>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- Search -->
+                            <span class="input-group">
+                                <input class="form-control tag-search col-xs-4" ng-model="tagSearchKey" ng-change="searchAllTags(this)" ng-model-options='{ debounce: 800 }' placeholder="{{'SEARCH_TAGS' | translate}}" />
+                                <span class="input-group-addon">
+                                    <button type="button" ng-click="clearSearch(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Small devices -->
+                    <div class="row hidden-sm hidden-md hidden-lg">
+                        <div class="col-xs-12">
+                            <!-- Most relevant tags -->
+                            <span ng-repeat="tag in tagCloudList track by $index">
+                                <button type="button" class="btn btn-primary btn-tag btn-sm" ng-model="tag.selected" uib-btn-checkbox uib-btn-checkbox-true="true" uib-btn-checkbox-false="false">{{tag.tagname}} &nbsp;&nbsp;<i ng-if="tag.selected" class="glyphicon glyphicon-remove-sign"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row hidden-sm hidden-md hidden-lg">
+                        <div class="col-xs-12">
+                            <!-- Search -->
+                            <span class="input-group">
+                                <input class="form-control tag-search col-xs-4" ng-model="tagSearchKey" ng-change="searchAllTags(this)" ng-model-options='{ debounce: 800 }' placeholder="{{'SEARCH_TAGS' | translate}}" />
+                                <span class="input-group-addon">
+                                    <button type="button" ng-click="clearSearch(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Search results -->
+                        <div class="tag-search-results panel text-center" ng-if="tagSearchResults">
+                            <span class="result-item" ng-repeat="result in tagSearchResults track by $index">
+                                <button type="button" ng-click="addTagToCloud(this, result)" class="btn btn-default btn-tag btn-sm"><span ng-bind-html="result | highlightSearch:tagSearchKey"></span> &nbsp;&nbsp;<i class="glyphicon glyphicon-plus-sign"></i></button>
+                            </span>
+                            <br />
+                            <span ng-if="!keyIsInCloud(this)&&tagSearchResults">
+                                <a ng-click="addAsNewTag(this)" style="cursor: pointer;"><span translate="ADD_NEW_TAG"></span> &nbsp;&nbsp;<i class="glyphicon glyphicon-plus-sign"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 hidden-xs"></div>    
+    </div>
+    
+<!-- Action: Create/ Store workout -->
+    <div class="row">
+        <div class="col-md-2 col-xs-1"></div>
+            <div id="workout-action" class="col-md-8 col-xs-10 text-center" ng-cloak>
+                <button class="btn btn-orange btn-saveWorkout" ng-click="saveWorkout(this)">
+                    <span ng-if="!isEdit" translate="CREATE_WORKOUT"></span>
+                    <span ng-if="isEdit" translate="SAVE_CHANGES"></span>
+                </button>
+            </div>
+        <div class="col-md-2 col-xs-1"></div>
+    </div>
+    <div class="bigspace"></div>
+</div>
+</div>

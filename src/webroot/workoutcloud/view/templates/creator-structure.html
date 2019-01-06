@@ -1,0 +1,85 @@
+<div ui-tree-handle class="item-container">
+    <!-- Round template -->
+    <div ng-if="item.title == 'Runde' || item.title == 'Round'" ng-include="'templates/creator-round.html'"></div>
+    
+    <!-- Exercise template -->
+    <div ng-if="item.title != 'Runde' && item.title != 'Round'" ng-include="'templates/creator-exercise.html'"></div>
+</div>
+
+<!-- List all exercises in current round -->
+<ol ui-tree-nodes="workoutPlan" ng-show="!item.collapsed" ng-model="item.exercises" ng-class="{hidden: collapsed}" class="workout-exercise">
+    <li ng-repeat="item in item.exercises" class="workout-exercise" ui-tree-node ng-include="'templates/creator-structure.html'" duration="{{item.duration}}">
+    </li>
+</ol>
+
+</li>
+<li>
+    <!-- Add new exercise in current round -->
+    <div class="btn-creator-addExercise" ng-show="checkDepth(this)">
+        <a class="btn btn-grey btn-xs btn-creator-exercise" data-nodrag ng-click="newExerciseToggle(this)" style="margin-right: 10px;"><i class="glyphicon glyphicon-plus"></i> <span translate="EXERCISE"></span></a>
+        <a class="btn btn-grey btn-xs btn-creator-pause" data-nodrag ng-click="addPause(this)"><i class="glyphicon glyphicon-plus"></i> Pause</a>
+    </div>
+    
+    <div class="creator-addExerciseSelect" ng-show="newExerciseData&&checkDepth(this)" data-nodrag>
+        <!-- Search -->
+        <input class="form-control exercise-search" ng-model="searchkey" ng-change="exerciseSearch(this, false)" ng-model-options='{ debounce: 800 }' placeholder="{{'SEARCH_EXERCISES' | translate}}"/>
+        <!-- Random exercises -->
+        <a class="btn btn-default btn-exercise-random" ng-click="randomExercise(this)"><span translate="RANDOM"></span> <i class="glyphicon glyphicon-random"></i></a>
+        
+        <!-- Search results -->
+        <div class="exercise-search-results panel" ng-if="searchresults">
+            <div class="result-item row" ng-repeat="result in searchresults">
+                <div class="col-sm-3">
+                    <div class="result-item-img-wrap" ng-show="result.picPath.length">
+                        <span ng-repeat="img in result.picPath track by $index">
+                            <a href="images/exercises/{{img}}-lg.jpg" data-toggle="lightbox" data-gallery="{{result.exercise_id}}">
+                                <img class="result-item-img img-rounded" src="images/exercises/{{img}}-sm.jpg" srcset="images/exercises/{{img}}-m.jpg 1000w, images/exercises/{{img}}-lg.jpg 2000w" />
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-6" class="border-bottom-grey">
+                    <div class="result-item-headline"><span>{{result.name}}</span></div>
+                    <div class="edescr-text">{{result.shortDescr}}</div>
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn btn-grey btn-xs" data-nodrag ng-if="replacableModel.id === undefined" ng-click="newExerciseCreate(this, result)"><i class="glyphicon glyphicon-accept"></i> <span translate="SELECT"></span></a>
+                    <a class="btn btn-grey btn-xs" data-nodrag ng-if="replacableModel.id !== undefined" ng-click="replaceExercise(result)"><i class="glyphicon glyphicon-accept"></i> <span translate="REPLACE"></span></a>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-primary btn-xs btn-block" ng-show="exerciseSearchEnabled" ng-click="exerciseSearch(this, true)"><span translate="LOAD_MORE"></span></button>
+                    <button class="btn btn-default btn-xs btn-block" ui-sref="modal.proposeExercise" ui-sref-opts="{location: false}"><span translate="PROPOSE_NEW_EXERCISE"></span></button>
+                </div>            
+            </div>         
+        </div>  
+        
+        <!-- Random exercise -->
+        <div class="exercise-random-result panel" ng-if="randomexercises">
+            <div class="result-item row" ng-repeat="exercise in randomexercises">
+                <div class="col-sm-3">
+                    <div class="result-item-img-wrap" ng-show="exercise.picPath.length">
+                        <span ng-repeat="img in exercise.picPath track by $index">
+                            <a href="images/exercises/{{img}}-lg.jpg" data-toggle="lightbox" data-gallery="{{exercise.exercise_id}}">
+                                <img class="result-item-img img-rounded" src="images/exercises/{{img}}-sm.jpg" srcset="images/exercises/{{img}}-m.jpg 1000w, images/exercises/{{img}}-lg.jpg 2000w" />
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-6" class="border-bottom-grey">
+                    <div class="result-item-headline"><span>{{exercise.name}}</span></div>
+                    <div class="edescr-text">{{exercise.shortDescr}}</div>
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn btn-grey btn-xs" data-nodrag ng-if="replacableModel.id === undefined" ng-click="newExerciseCreate(this, exercise)"><i class="glyphicon glyphicon-accept"></i> <span translate="SELECT"></span></a>
+                    <a class="btn btn-grey btn-xs" data-nodrag ng-if="replacableModel.id !== undefined" ng-click="replaceExercise(exercise)"><i class="glyphicon glyphicon-accept"></i> <span translate="REPLACE"></span></a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+

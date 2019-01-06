@@ -1,0 +1,38 @@
+﻿<!-- Dimensions panel -->
+<div class="row text-center wide-margin">
+    <div class="col-md-1 hidden-xs hidden-sm"></div>
+    <div class="col-md-10 col-sm-12">
+        <h4 translate="CUSTOMIZER_FOCUS_HEADLINE"></h4>
+    </div>
+    <div class="col-md-1 hidden-xs hidden-sm"></div>
+</div>
+<div class="panel panel-customizer">
+    <div style="height: 10px; width: 100%"></div>
+    <!-- Dimensions selection -->
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10"><h5><span translate="CUSTOMIZER_DIMENSIONS_EXPLAIN"></span></h5></div>
+        <div class="col-xs-1"></div>
+    </div>
+    <div style="height: 10px; width: 100%"></div>
+    <div class="row" ng-cloak>
+        <div class="hidden-xs hidden-sm col-md-1"></div>
+        <div class="col-sm-12 col-md-10 text-center">
+            <div ng-repeat="dim in dimensions" class="customizer-dim" ng-class="{'active': dim.selected}" ng-click="customizerToggleDimension(dim)">
+                <div class="customizer-dim-indicator" ng-if="dim.selected"><i class="fa fa-check"></i></div>
+                <img ng-src="images/app/customizer/{{dim.selected?dim.dimImg.selected:dim.dimImg.normal}}" />
+            </div>
+        </div>
+        <div class="hidden-xs hidden-sm col-md-1"></div>
+    </div>
+    <div class="smallspace"></div>
+</div>
+<div class="smallspace"></div>
+<div class="row" ng-cloak>
+    <div class="hidden-xs col-sm-3"></div>
+    <div class="col-xs-12 col-sm-6 text-center">
+        <button class="btn btn-orange btn-block" ng-disabled="noMotiveSelected()" ng-click="customizerFinalize()"><span translate="GET_PERSONALIZED_RESULTS"></span></button>
+        <div ng-if="noMotiveSelected()" class="text-muted" translate="SELECT_A_MOTIVE"></div>
+    </div>
+    <div class="hidden-xs col-sm-3"></div>
+</div>

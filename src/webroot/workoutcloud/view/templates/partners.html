@@ -1,0 +1,38 @@
+<div ng-controller="partnersCtrl" class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">       
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 translate="PARTNERS"></h3>
+                </div>
+            </div> 
+            <div class="smallspace"></div>           
+            <div class="row" ng-repeat="partner in partners" style="padding-bottom: 30px; border-bottom: 1px solid #ccc;">
+                <div class="col-xs-12 img-rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-3">
+                            <a href="{{partner.href}}" target="_blank"><img src="images/app/partners/{{partner.logo}}" width="100%" title="{{partner.slogan}}" alt="{{partner.name}}"/></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-9">
+                            <div class="row">
+                                <div class="col-xs-12" style="padding-top: 10px; padding-bottom: 10px;">
+                                    <h4>{{partner.slogan}}</h4>
+                                </div>
+                                <div class="col-xs-12">
+                                    <p translate="{{partner.translatePrefix}}_DESCR" class="text-muted text-justify"></p>
+                                </div>
+                                <div class="col-xs-12" style="padding-top: 20px;">
+                                    <span ng-repeat="link in partner.links" style="margin-right: 20px;">
+                                        <a href="{{link.href}}" target="_blank" style="text-decoration: none;"><i class="{{link.iconClass}}"></i> &nbsp;&nbsp; {{link.text}}</a>                                        
+                                    </span>
+                                </div>
+                            </div>                           
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="bigspace"></div>
+        </div>
+    </div>
+    <div class="bigspace"></div>
+</div>

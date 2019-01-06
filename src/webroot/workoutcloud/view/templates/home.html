@@ -1,0 +1,142 @@
+<!-- HOME -->
+<div ng-controller="homeCtrl">
+<div class="landing-top" id="landing-top">
+    <div class="container">
+        <div class="col-md-1 hidden-xs hidden-sm"></div>
+        <div class="col-md-10 col-xs-12">
+            <!-- Customizer -->
+            <multi-step-container id="customizer" ng-show="!isAuthenticated()" steps="customizerSteps" class="sliding-steps">
+                <div class="text-center">
+                    <h2 translate="CUSTOMIZER_HEADLINE"></h2>
+                    <div class="smallspace"></div>
+                </div>
+                <!-- Progress -->
+                <ul id="progressbar">
+            		<li class="active" translate="MOODS" ng-click="$setActiveIndex(1)"></li>
+            		<li ng-class="{'active' : $getActiveIndex()>=2, 'disabled': noMotiveSelected() }" translate="DIFFICULTY" ng-click="noMotiveSelected() || $setActiveIndex(2)"></li>
+            		<li ng-class="{'active' : $getActiveIndex()==3, 'disabled': noMotiveSelected() }" translate="DIMENSIONS" ng-click="noMotiveSelected() || $setActiveIndex(3)"></li>
+            	</ul>
+                <main step-container></main>
+                <a role="button" href class="carousel-control left" style="background-image: none; width: 20px; display: flex; align-items: center; margin-top: 20px; left: -15px" ng-click="$previousStep()" ng-show="!$isFirst()">
+                    <span aria-hidden="true"><img src="images/app/arrLeft.png" style="width: 50px;" /></span>
+                    <span class="sr-only">previous</span>
+                  </a>
+                <a role="button" href class="carousel-control right" style="background-image: none; width: 20px; display: flex; align-items: center; margin-top: 20px; right: 15px" ng-click="$nextStep();removeBlink()" ng-show="!$isLast()&&!noMotiveSelected()">
+                    <span aria-hidden="true"><img src="images/app/arrRight.png" style="width: 50px;" /></span>
+                    <span class="sr-only">next</span>
+                </a>
+            </multi-step-container>
+
+
+            <!-- Logged in view -->
+            <div ng-show="isAuthenticated()">
+                <div class="row text-center wide-margin">
+                    <div class="col-md-1 hidden-xs hidden-sm"></div>
+                    <div class="col-md-10 col-sm-12">
+                        <h2 translate="LOGGEDIN_TILES_HEADLINE"></h2>
+                        <div class="smallspace"></div>
+                    </div>
+                    <div class="col-md-1 hidden-xs hidden-sm"></div>
+                </div>
+                <!-- Tiles sections -->
+                <div class="row" ng-cloak>
+                    <div class="hidden-xs hidden-sm col-md-1"></div>
+                    <div class="col-sm-12 col-md-10 text-center">
+                        <div ng-repeat="mood in tiles" class="home-tile" ng-class="{'active': mood.selected}" ng-click="moodToggleTile(mood)">
+                            <div class="home-tile-indicator" ng-if="mood.selected"><i class="fa fa-check"></i></div>
+                            <img ng-src="images/app/motivetiles/{{currLang=='de_DE'?mood.tileImg.de_DE:mood.tileImg.en_EN}}" />
+                        </div>
+                    </div>
+                    <div class="hidden-xs hidden-sm col-md-1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 hidden-xs hidden-sm"></div>
+    </div>
+</div>
+<!-- Value tiles -->
+<div class="container-fluid padding-0" ng-hide="isAuthenticated()">
+    <div class="row">
+        <div class="col-xs-12 col-md-3 padding-0"><img ng-src="images/app/valuetiles/free_{{currLang=='de_DE'?'de':'en'}}.jpg" class="valuetile-img responsive-img pull-left" /></div>
+        <div class="col-xs-12 col-md-3 padding-0"><img ng-src="images/app/valuetiles/personalized_{{currLang=='de_DE'?'de':'en'}}.jpg" class="valuetile-img responsive-img pull-left" /></div>
+        <div class="col-xs-12 col-md-3 padding-0"><img ng-src="images/app/valuetiles/bodyweight_{{currLang=='de_DE'?'de':'en'}}.jpg" class="valuetile-img responsive-img pull-left" /></div>
+        <div class="col-xs-12 col-md-3 padding-0"><img ng-src="images/app/valuetiles/versatile_{{currLang=='de_DE'?'de':'en'}}.jpg" class="valuetile-img responsive-img pull-left" /></div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="container ">
+    <!-- Section: 8tracks integration -->
+    <div class="row" >
+        <div class="col-sm-4 hidden-xs"></div>
+        <div class="col-sm-4 col-xs-12" style="text-align: center;" ng-show="showMusicIntegration">
+            <a href="{{musicIntegrationLink}}" target="_blank">
+                <img src="images/app/motivetiles/{{musicIntegrationImg}}" style="width: 100%; max-width: 350px; margin-top: 10px" alt="Start the soundtrack of your workout" title="Start the soundtrack of your workout" />
+            </a></div>
+        <div class="col-sm-4 hidden-xs"></div>
+    </div>
+
+    <!-- Divider -->
+    <div class="smallspace"></div>
+    <div class="row" >
+        <div class="col-xs-12" ng-show="!showMusicIntegration">
+            <h4 translate="{{workoutHeadline}}"></h4><br />
+        </div>
+    </div>
+    <!-- Section: Filter -->
+
+    <!-- Section: Recommended Workouts -->
+    <div id="recom-workouts-container" ng-cloak>
+        <div class="workout-preview" ng-repeat="workout in workoutList track by $index" ng-show="workoutList.length" ng-include="'templates/workout-single.html'">
+        </div>
+        <div class="row" ng-show="!workoutList.length&&loadingActive">
+            <div class="col-xs-5"></div>
+            <div class="col-xs-2 center-block">
+                <img src="images/app/loading-spinner.png" srcset="images/app/loading-spinner.GIF" alt=""  width="50px"/>
+            </div>
+            <div class="col-xs-5"></div>
+        </div>
+        <div ng-show="!workoutList.length&&!loadingActive" translate="NO_WORKOUTS_FOUND"></div>
+    </div>
+    <div class="smallspace"></div>
+    <!-- Load more results or lead to customizer -->
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-orange btn-block" ng-show="!isAuthenticated()" ng-click="scrollToTop()"><span translate="CUSTOMIZE_TO_GET_BETTER_RESULTS"></span></button>
+            <button class="btn btn-primary btn-block" ng-show="loadingEnabled&&workoutList.length&&isAuthenticated()" ng-click="loadWorkoutList(true)"><span translate="LOAD_MORE"></span></button>
+        </div>
+    </div>
+</div>
+
+<div class="middlespace"></div>
+<!-- Featured in section -->
+<div class="container">
+    <div class="row"><div class="col-xs-12"><h4 translate="FEATURED_IN"></h4></div></div>
+    <div class="row">
+        <div ng-repeat="feature in features track by $index" class="col-xs-4 col-sm-3 col-md-2">
+            <a href="{{feature.link}}"><img ng-src="images/app/featuredin/{{feature.img}}" class="featuredin-img responsive-img" title="{{feature.name}}" /></a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- Create workout button -->
+<div id="btn-create-workout" ng-show="isAuthenticated()">
+	<a ui-sref="content.creator" class="hidden-xs"><img class="add-workout" src="images/app/create_workout_button.png" alt="Sidefits" /></a>
+    <a ui-sref="content.creator" class="visible-xs-block"><img class="add-workout" src="images/app/Add_workout_Button.png" alt="Sidefits" /></a>
+</div>
+
+<!-- Invite friends button -->
+<div id="btn-invite-friends" ng-show="isAuthenticated()">
+    <a ui-sref="modal.invite" class="hidden-xs"><img class="add-workout" src="images/app/invite_friends_large.png" alt="Sidefits" /></a>
+    <a ui-sref="modal.invite" class="visible-xs-block"><img class="add-workout" src="images/app/invite_friends_small.png" alt="Sidefits" /></a>
+</div>
+
+<!-- Update meta tags -->
+<update-title title="{{isAuthenticated() ? 'Home of my workouts' : 'Find and create the most versatile workouts in the world. Now!'}}"></update-title>
+<update-meta property="og:title" content="{{isAuthenticated() ? 'Home of my workouts' : 'Sidefits WorkoutCloud'}}"></update-meta>
+<!-- <update-meta property="og:description" content="The Sidefits WorkoutCloud suggests you the perfect workout and lets you create your own workouts with ease."></update-meta>
+<update-meta property="og:url" content="https://workoutcloud.net/view/#!/home"></update-meta>
+<update-meta property="og:image" content="https://workoutcloud.net/view/images/app/cloud_large.jpg"></update-meta>
+<update-meta property="og:image:secure_url" content="https://workoutcloud.net/view/images/app/cloud_large.jpg"></update-meta>  -->
