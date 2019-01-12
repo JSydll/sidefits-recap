@@ -1,13 +1,5 @@
 version:  '3'
 
-volumes:
-  mysql-data:
-    driver: local
-    driver_opts:
-      type: "none"
-      o: "bind"
-      device: "${PWD}/mysql/data"
-
 services:
   php-apache:
     build:
@@ -24,16 +16,19 @@ services:
       - neo4j
 
   mysql:
-    image: mysql
+    image: mariadb:10.1
     volumes:
-      - mysql-data:/var/lib/mysql
-    restart: always
+      - ./mysql/config:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+    restart: unless-stopped
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
       MYSQL_ROOT_PASSWORD: "custom-root-pw"
       MYSQL_USER: "sf-db-user"
       MYSQL_PASSWORD: "sf-usr-pw"
       MYSQL_DATABASE: "sf-db"
+    command:
+      mysqld --innodb-flush-method=littlesync --innodb-use-native-aio=OFF --log_bin=ON
 
   myadmin:
     image: phpmyadmin/phpmyadmin
