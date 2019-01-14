@@ -13,6 +13,7 @@ $reqbody = $slimapi->request->getBody();
 $bodyDecoded = json_decode($reqbody, true);
 
 $slimapi->add(new \Slim\Middleware\JwtAuthentication([
+    "secure" => false, // For development only
     "secret" => $ENV_VARS["JWT_SECRET_KEY"],
     "rules" => [
         new \Slim\Middleware\JwtAuthentication\RequestPathRule([

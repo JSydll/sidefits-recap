@@ -1,7 +1,6 @@
 <?php
 // Load the environment
 require_once(__DIR__."/../environment/load_environment.php");
-require_once(__DIR__."/../environment/urlfix.php");
 // OVERALL DATA MODEL OF MIXED OPERATIONS (
 // INCLUDING BOTH NEO4J AND MYSQL AS WELL AS MIXED FUNCTIONS
 

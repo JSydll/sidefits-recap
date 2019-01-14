@@ -1,4 +1,4 @@
-var apiPath = '../api';
+var apiPath = '/workoutcloud/api';
 var apiHook = ".php";
 
 angular.module('workoutBox')

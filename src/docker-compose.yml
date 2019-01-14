@@ -5,8 +5,8 @@ services:
     build:
       context: ./php-apache
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     volumes:
       - ./webroot:/var/www/html
     environment:
@@ -17,6 +17,8 @@ services:
 
   mysql:
     image: mariadb:10.1
+    ports:
+      - "3306:3306"
     volumes:
       - ./mysql/config:/etc/mysql/conf.d
       - ./mysql/data:/var/lib/mysql
@@ -33,9 +35,9 @@ services:
   myadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-      - 8080:80
-      - 4433:443
-    restart: always
+      - "8080:80"
+      - "4433:443"
+    restart: unless-stopped
     environment:
       MYSQL_USERNAME: "sf-db-user"
       MYSQL_PASSWORD: "sf-usr-pw"
@@ -44,11 +46,10 @@ services:
 
   neo4j:
     image: neo4j:2.3
-    network_mode: bridge
     ports: 
-      - 7474:7474
+      - "7474:7474"
+      - "7473:7473"
     volumes: 
-      - ./neo4j/conf:/conf
       - ./neo4j/import:/import
       - ./neo4j/data:/data
     ulimits:

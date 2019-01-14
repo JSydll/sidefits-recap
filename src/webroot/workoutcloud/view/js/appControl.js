@@ -1,3 +1,4 @@
+var apiPath = '/workoutcloud/api';
 var apiHook = ".php";
 var workoutBox = angular.module('workoutBox',['ui.tree', 'ui.router', 'ct.ui.router.extras', 'updateMeta', 'angulartics', 'angulartics.google.analytics', 'pascalprecht.translate', 'ui.bootstrap', 'rzModule', 'toggle-switch', 'multiStepForm', 'ngFileUpload', 'angular-loading-bar', '720kb.socialshare', 'angularNumberPicker', 'ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'satellizer', 'ngSanitize']);
 
@@ -305,10 +306,10 @@ workoutBox.config(function($stateProvider, $stickyStateProvider, $urlRouterProvi
     }
     // Here comes the authorization config
     $authProvider.authHeader = 'SF-Authorization';
-    $authProvider.signupUrl = '/api/user' + apiHook + '/register';
-    $authProvider.loginUrl = '/api/user' + apiHook + '/login';
+    $authProvider.signupUrl = apiPath + '/user' + apiHook + '/register';
+    $authProvider.loginUrl = apiPath + '/user' + apiHook + '/login';
     $authProvider.facebook({
-        url: '/api/user' + apiHook + '/fbsignin',
+        url: apiPath + '/user' + apiHook + '/fbsignin',
         clientId: '177005462647097',
         redirectUri: 'https://workoutcloud.net/'
     });

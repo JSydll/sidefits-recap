@@ -1,5 +1,5 @@
 // CREATOR
-var apiPath = "../api";
+var apiPath = "/workoutcloud/api";
 var apiHook = ".php";
 
 angular.module('workoutBox').controller('workoutCreatorCtrl',['$scope', 'exerciseFact', 'tagFact', 'workoutFact', '$translate', 'Upload', function($scope, exerciseFact, tagFact, workoutFact, $translate, Upload, $location, toastr) {
