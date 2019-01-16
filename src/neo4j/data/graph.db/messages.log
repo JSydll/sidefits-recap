@@ -23764,3 +23764,16 @@ Storage files: (filename : modification date - size)
 2019-01-14 20:55:15.819+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by scheduler for time threshold [40]:  Check pointing completed
 2019-01-14 20:55:15.822+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Starting log pruning.
 2019-01-14 20:55:15.826+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Log pruning complete.
+2019-01-14 21:04:58.714+0000 INFO  [o.n.k.i.f.GraphDatabaseFacade] Shutdown started
+2019-01-14 21:04:58.721+0000 INFO  [o.n.k.i.f.CommunityFacadeFactory] Database is now unavailable
+2019-01-14 21:04:58.755+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [40]:  Starting check pointing...
+2019-01-14 21:04:58.759+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [40]:  Starting store flush...
+2019-01-14 21:04:58.765+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [40]:  Store flush completed
+2019-01-14 21:04:58.770+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [40]:  Starting appending check point entry into the tx log...
+2019-01-14 21:04:58.775+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [40]:  Appending check point entry into the tx log completed
+2019-01-14 21:04:58.779+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] Check Pointing triggered by database shutdown [40]:  Check pointing completed
+2019-01-14 21:04:58.784+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Starting log pruning.
+2019-01-14 21:04:58.788+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] Log Rotation [0]:  Log pruning complete.
+2019-01-14 21:04:59.003+0000 INFO  [o.n.k.NeoStoreDataSource] NeoStores closed
+2019-01-14 21:04:59.008+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STOPPING diagnostics START ---
+2019-01-14 21:04:59.008+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STOPPING diagnostics END ---
