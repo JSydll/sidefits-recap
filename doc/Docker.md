@@ -43,8 +43,8 @@ Docker can only be executed in the preconfigured shell provided by the Toolbox. 
 # Using the Docker Quickstart Shell
 
 Useful commands:
-    - `docker-compose up` Downloads/builds/runs a composition of Docker containers defined in a `docker-compose.yml` file.
-    - `docker-compose up --build` Rerun the build step to account for changes in the configuration of container images.
-    - `docker-machine restart default` Restart the `default` machine (e.g. necessary if you encountered network issues).
-    - `docker info` Displays information on the current Docker setup.
-    - `docker-machine ip` Display the IP under which a running container can be reached.
+- `docker-compose up` Downloads/builds/runs a composition of Docker containers defined in a `docker-compose.yml` file.
+- `docker-compose up --build` Rerun the build step to account for changes in the configuration of container images.
+- `docker-machine restart default` Restart the `default` machine (e.g. necessary if you encountered network issues).
+- `docker info` Displays information on the current Docker setup.
+- `docker-machine ip` Display the IP under which a running container can be reached.

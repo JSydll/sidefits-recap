@@ -56,7 +56,7 @@ workoutBox.factory('workoutFact', ['$http', function($http){
             return $http.get(apiPath + '/workout' + apiHook + '/user/created/' + limit + '/' + skip);
         },
         create: function(data){
-            return $http.put(apiPath + '/workout.' + apiHook + '/user/create', data);
+            return $http.put(apiPath + '/workout' + apiHook + '/user/create', data);
         },
         update: function(data){
             return $http.put(apiPath + '/workout' + apiHook + '/user/update', data);
@@ -102,7 +102,7 @@ workoutBox.factory('userFact', ['$http', function($http){
             return $http.post(apiPath + '/user' + apiHook + '/passwordRecovery', {resetEmail: resetEmail});
         },
         validResetToken: function(resetEmail, resetToken) {
-            return $http.post(apiPath + '/user.' + apiHook + '/passwordRecovery', {resetEmail: resetEmail, resetToken: resetToken});
+            return $http.post(apiPath + '/user' + apiHook + '/passwordRecovery', {resetEmail: resetEmail, resetToken: resetToken});
         },
         performPasswordReset: function(resetEmail, resetToken, newPassword){
             return $http.post(apiPath + '/user' + apiHook + '/passwordRecovery', {resetEmail: resetEmail, resetToken: resetToken, newPassword: newPassword});

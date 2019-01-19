@@ -296,3 +296,13 @@
 2019-01-17 21:03:00.145+0000 INFO  Successfully shutdown Neo4j Server
 2019-01-17 21:03:00.528+0000 INFO  Successfully stopped database
 2019-01-17 21:03:00.530+0000 INFO  Successfully shutdown database
+2019-01-19 12:40:43.123+0000 INFO  Successfully started database
+2019-01-19 12:40:43.190+0000 INFO  Starting HTTP on port 7474 (1 threads available)
+2019-01-19 12:40:43.635+0000 INFO  Enabling HTTPS on port 7473
+2019-01-19 12:40:43.791+0000 INFO  Mounting static content at /webadmin
+2019-01-19 12:40:43.868+0000 INFO  Mounting static content at /browser
+2019-01-19 12:40:47.180+0000 INFO  Remote interface ready and available at http://127.0.0.1:7474/
+2019-01-19 12:40:48.141+0000 INFO  Neo4j Server shutdown initiated by request
+2019-01-19 12:40:48.203+0000 INFO  Successfully shutdown Neo4j Server
+2019-01-19 12:40:48.534+0000 INFO  Successfully stopped database
+2019-01-19 12:40:48.535+0000 INFO  Successfully shutdown database

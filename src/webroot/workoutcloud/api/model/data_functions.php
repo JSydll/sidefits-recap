@@ -180,7 +180,8 @@ function data_createPDF($userID, $mysqlDataObject, $neo4jDataObject, $tagsArray 
         $mysqlDataObject->exerciseDescriptions = $exerciseDescriptions;
 
         // Now create the PDF
-        $pdfPath = data_createPDF($userID, $mysqlDataObject, $neo4jDataObject, $tagsArray);
+        //$pdfPath = data_createPDF($userID, $mysqlDataObject, $neo4jDataObject, $tagsArray);
+        $pdfPath = ""; // No PDF generation for the DEMO
 
         // Store path in mysql
         $mysqlDataObject->pdfPath = $pdfPath;

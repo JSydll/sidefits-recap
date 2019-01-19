@@ -13,6 +13,10 @@ Besides a landing page, the following applications are delivered in the containe
 - The FitTest we developed to measure an athletes physical constitution without additional tools.
 - The WorkoutCloud web-app - basically our Minimum Viable Product.
 
+There are some limitations for the WorkoutCloud web-app, though:
+- The signup via Facebook is disabled.
+- The generation of a workout PDF is currently disabled.
+
 ## Prerequisites
 
 First, you have to get Docker for your operating system. 
